@@ -1,12 +1,12 @@
 class BoatModelsController < ApplicationController
-  before_action :set_boat_model, only: %i[ show edit update destroy ]
+  before_action :set_boat_model, only: [:show, :edit, :update, :destroy]
 
-  # GET /boat_models or /boat_models.json
+  # GET /boat_models
   def index
     @boat_models = BoatModel.all
   end
 
-  # GET /boat_models/1 or /boat_models/1.json
+  # GET /boat_models/1
   def show
   end
 
@@ -19,52 +19,55 @@ class BoatModelsController < ApplicationController
   def edit
   end
 
-  # POST /boat_models or /boat_models.json
+  # POST /boat_models
   def create
     @boat_model = BoatModel.new(boat_model_params)
 
-    respond_to do |format|
-      if @boat_model.save
-        format.html { redirect_to boat_model_url(@boat_model), notice: "Boat model was successfully created." }
-        format.json { render :show, status: :created, location: @boat_model }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @boat_model.errors, status: :unprocessable_entity }
-      end
+    if @boat_model.save
+      redirect_to @boat_model, notice: 'Boat model was successfully created.'
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /boat_models/1 or /boat_models/1.json
+  # PATCH/PUT /boat_models/1
   def update
-    respond_to do |format|
-      if @boat_model.update(boat_model_params)
-        format.html { redirect_to boat_model_url(@boat_model), notice: "Boat model was successfully updated." }
-        format.json { render :show, status: :ok, location: @boat_model }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @boat_model.errors, status: :unprocessable_entity }
-      end
+    if @boat_model.update(boat_model_params)
+      redirect_to @boat_model, notice: 'Boat model was successfully updated.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /boat_models/1 or /boat_models/1.json
+  # DELETE /boat_models/1
   def destroy
     @boat_model.destroy
-
-    respond_to do |format|
-      format.html { redirect_to boat_models_url, notice: "Boat model was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to boat_models_url, notice: 'Boat model was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_boat_model
-      @boat_model = BoatModel.find(params[:id])
+      @boat_model = BoatModel.includes(:standard_features, :power_options, :console_options, :factory_options, :gauge_upgrades, :seating_options, :aluminum_options, :lighting_options, :finishing_options, :cooler_options, :wetsound_packages, :additional_options, :trailer_upgrades).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-  def boat_model_params
-    params.require(:boat_model).permit(:length, :beam, :max_hp, :hull_weight, :max_passengers, :price_hull, :price_trailer_hull, :name, :stock_number, :style, :year)
-  end
+    def boat_model_params
+      params.require(:boat_model).permit(:length, :beam, :max_hp, :hull_weight, :max_passengers, :price_hull, :price_trailer_hull, :name, :stock_number, :style, :year, 
+        standard_features_attributes: [:id, :name, :description, :price, :_destroy],
+        power_options_attributes: [:id, :name, :description, :price, :engine_model, :engine_make, :year, :serial_number, :_destroy],
+        console_options_attributes: [:id, :name, :description, :price, :_destroy],
+        factory_options_attributes: [:id, :name, :description, :price, :_destroy],
+        gauge_upgrades_attributes: [:id, :name, :description, :price, :_destroy],
+        seating_options_attributes: [:id, :name, :description, :price, :_destroy],
+        aluminum_options_attributes: [:id, :name, :description, :price, :_destroy],
+        lighting_options_attributes: [:id, :name, :description, :price, :_destroy],
+        finishing_options_attributes: [:id, :name, :description, :price, :_destroy],
+        cooler_options_attributes: [:id, :name, :description, :price, :_destroy],
+        wetsound_packages_attributes: [:id, :name, :description, :price, :_destroy],
+        additional_options_attributes: [:id, :name, :description, :price, :_destroy],
+        trailer_upgrades_attributes: [:id, :name, :description, :price, :_destroy]
+      )
+    end
+
 end

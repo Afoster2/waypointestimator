@@ -1,0 +1,13 @@
+.grid.grid-cols-6.gap-4
+  .col-span-2
+    = f.label :name
+    = f.text_field :name, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+  .col-span-3
+    = f.label :description
+    = f.text_field:description, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+  .col-span-1
+    = f.label :price
+    = f.number_field :price, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+  .col-span-2
+    = f.check_box :_destroy
+    = f.label :_destroy, "Remove this feature"

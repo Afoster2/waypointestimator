@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_30_172102) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_084814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "additional_options", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_additional_options_on_boat_model_id"
+  end
+
+  create_table "aluminum_options", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_aluminum_options_on_boat_model_id"
+  end
 
   create_table "boat_model_options", force: :cascade do |t|
     t.bigint "boat_model_id", null: false
@@ -39,6 +59,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_172102) do
     t.integer "year"
   end
 
+  create_table "console_options", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_console_options_on_boat_model_id"
+  end
+
+  create_table "cooler_options", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_cooler_options_on_boat_model_id"
+  end
+
   create_table "estimates", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "boat_model_id", null: false
@@ -54,6 +94,46 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_172102) do
     t.index ["user_id"], name: "index_estimates_on_user_id"
   end
 
+  create_table "factory_options", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_factory_options_on_boat_model_id"
+  end
+
+  create_table "finishing_options", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_finishing_options_on_boat_model_id"
+  end
+
+  create_table "gauge_upgrades", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_gauge_upgrades_on_boat_model_id"
+  end
+
+  create_table "lighting_options", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_lighting_options_on_boat_model_id"
+  end
+
   create_table "options", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -61,6 +141,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_172102) do
     t.string "option_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "power_options", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.string "engine_model"
+    t.string "engine_make"
+    t.integer "year"
+    t.string "serial_number"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_power_options_on_boat_model_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -71,6 +165,36 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_172102) do
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
+  end
+
+  create_table "seating_options", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_seating_options_on_boat_model_id"
+  end
+
+  create_table "standard_features", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_standard_features_on_boat_model_id"
+  end
+
+  create_table "trailer_upgrades", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_trailer_upgrades_on_boat_model_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,8 +217,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_172102) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  create_table "wetsound_packages", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "boat_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_model_id"], name: "index_wetsound_packages_on_boat_model_id"
+  end
+
+  add_foreign_key "additional_options", "boat_models"
+  add_foreign_key "aluminum_options", "boat_models"
   add_foreign_key "boat_model_options", "boat_models"
   add_foreign_key "boat_model_options", "options"
+  add_foreign_key "console_options", "boat_models"
+  add_foreign_key "cooler_options", "boat_models"
   add_foreign_key "estimates", "boat_models"
   add_foreign_key "estimates", "users"
+  add_foreign_key "factory_options", "boat_models"
+  add_foreign_key "finishing_options", "boat_models"
+  add_foreign_key "gauge_upgrades", "boat_models"
+  add_foreign_key "lighting_options", "boat_models"
+  add_foreign_key "power_options", "boat_models"
+  add_foreign_key "seating_options", "boat_models"
+  add_foreign_key "standard_features", "boat_models"
+  add_foreign_key "trailer_upgrades", "boat_models"
+  add_foreign_key "wetsound_packages", "boat_models"
 end
