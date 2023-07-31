@@ -1,0 +1,33 @@
+%h1= @boat_model.name
+
+%ul.list-disc.ml-5
+  %li
+    %strong Stock Number:
+    = @boat_model.stock_number
+  %li
+    %strong Style:
+    = @boat_model.style
+  %li
+    %strong Length:
+    = @boat_model.length
+  %li
+    %strong Beam:
+    = @boat_model.beam
+  %li
+    %strong Max HP:
+    = @boat_model.max_hp
+  %li
+    %strong Hull Weight:
+    = @boat_model.hull_weight
+  %li
+    %strong Max Passengers:
+    = @boat_model.max_passengers
+  %li
+    %strong Price of Hull Only:
+    = @boat_model.price_hull
+  %li
+    %strong Price with Trailer & Hull:
+    = @boat_model.price_trailer_hull
+
+= link_to 'Edit', edit_boat_model_path(@boat_model), class: 'mt-5 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+= link_to 'Back', boat_models_path, class: 'mt-5 ml-3 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'

@@ -1,0 +1,19 @@
+.bg-gray-50.py-10
+  .mx-auto.w-full{:class => "md:w-2/3"}
+    %h2.text-center.text-3xl.text-blue-500.mb-4 Log in
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .mb-4
+        = f.label :email, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+      .mb-4
+        = f.label :password, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = f.password_field :password, autocomplete: "current-password", class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+      - if devise_mapping.rememberable?
+        .mb-4
+          = f.check_box :remember_me, class: 'mr-2 leading-tight'
+          = f.label :remember_me
+      .mb-4
+        = f.submit "Log in", class: 'w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+
+    = render "devise/shared/links"

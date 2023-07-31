@@ -1,0 +1,40 @@
+.bg-gray-50.py-10
+  .mx-auto.w-full{:class => "md:w-2/3"}
+
+    .py-5.px-10.bg-gray-200.my-5
+      %h2.text-center.text-3xl.text-blue-500.mb-4 Edit #{resource_name.to_s.humanize}
+     
+      = button_to "Cancel this account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 float-right'
+        
+      %p User Name
+      %p
+        = @user.email
+
+
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .mb-4
+        = f.label :email, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+      .mb-4
+        = f.label :password, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = f.password_field :password, autocomplete: "new-password", class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+        %em
+          (leave blank if you don't want to change it)
+      .mb-4
+        = f.label :password_confirmation, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+      .mb-4
+        = f.label :current_password, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = f.password_field :current_password, autocomplete: "current-password", class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+        %em
+          (we need your current password to confirm your changes)
+      .mb-4
+        = f.submit "Update", class: 'w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+
+
+
+    = link_to "Back", :back, class: 'mt-4 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800'

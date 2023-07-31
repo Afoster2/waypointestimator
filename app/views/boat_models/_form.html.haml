@@ -1,0 +1,53 @@
+= form_with(model: boat_model, local: true) do |form|
+  - if boat_model.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(boat_model.errors.count, "error")} prohibited this boat_model from being saved:"
+      %ul
+        - boat_model.errors.full_messages.each do |message|
+          %li= message
+  %form
+    .grid.grid-cols-6.gap-4
+      .col-span-1
+        = form.label :year, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.select :year, (Time.now.year-50..Time.now.year).to_a.reverse, {}, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+      .col-span-3
+        = form.label :make, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.text_field :name, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+      .col-span-2
+        = form.label :model, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.text_field :style, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+      .col-span-1
+        = form.label :stock_number, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.text_field :stock_number, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+      .col-span-1
+        = form.label :length, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.text_field :length, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+      .col-span-1
+        = form.label :beam, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.text_field :beam, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+      .col-span-1
+        = form.label :max_hp, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.number_field :max_hp, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+      .col-span-1
+        = form.label :hull_weight, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.number_field :hull_weight, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+      .col-span-1
+        = form.label :max_passengers, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.number_field :max_passengers, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+      .col-span-1
+        = form.label :hull_only_price, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.number_field :price_hull, placeholder: "$", class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+      .col-span-1
+        = form.label :trailer_with_hull_price, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = form.number_field :price_trailer_hull, placeholder: "$", class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+    = form.submit class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'

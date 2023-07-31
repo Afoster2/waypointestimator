@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  boat_model: one
+  subtotal: 9.99
+  tax: 9.99
+  vit: 9.99
+  doc_fee: 9.99
+  registration: 9.99
+  total_price: 9.99
+
+two:
+  user: two
+  boat_model: two
+  subtotal: 9.99
+  tax: 9.99
+  vit: 9.99
+  doc_fee: 9.99
+  registration: 9.99
+  total_price: 9.99

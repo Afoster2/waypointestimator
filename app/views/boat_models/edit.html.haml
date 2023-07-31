@@ -1,0 +1,9 @@
+.mx-auto.my-20.w-full{:class => "md:w-2/3"}
+  %h1.font-bold.text-4xl.my-0 Editing boat model
+  = link_to "View Model", @boat_model, class: "my-5 rounded-lg py-3 px-5 bg-gray-100 inline-block font-bold text-gray-500 hover:bg-gray-200 no-underline"
+  = link_to 'Delete', @boat_model, method: :delete, data: { confirm: 'Are you sure?' }, class: "my-5 rounded-lg py-3 px-5 bg-red-300 inline-block font-bold text-red-500 hover:bg-red-400 no-underline"
+  = render "form", boat_model: @boat_model
+
+  .my-6
+    = link_to "Back to boat models", boat_models_path, class: "my-5 rounded-lg py-3 px-5 bg-gray-300 inline-block font-bold text-gray-500 hover:bg-gray-200 no-underline"
+

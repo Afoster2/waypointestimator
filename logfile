@@ -1,0 +1,272 @@
+2023-07-28 10:36:58.923 CDT [4363] LOG:  starting PostgreSQL 14.8 (Homebrew) on x86_64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.202), 64-bit
+2023-07-28 10:36:58.924 CDT [4363] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-28 10:36:58.924 CDT [4363] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-28 10:36:58.925 CDT [4363] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-28 10:36:58.928 CDT [4364] LOG:  database system was shut down at 2023-07-28 10:36:26 CDT
+2023-07-28 10:36:58.931 CDT [4363] LOG:  database system is ready to accept connections
+2023-07-28 11:47:27.995 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:27.995 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:27.995 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:27.976826', '2023-07-28 16:47:27.976826'), (298486374, 298486374, 298486374, '2023-07-28 16:47:27.976826', '2023-07-28 16:47:27.976826');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:27.983402', '2023-07-28 16:47:27.983402'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:27.983402', '2023-07-28 16:47:27.983402');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:27.984682', '2023-07-28 16:47:27.984682'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:27.984682', '2023-07-28 16:47:27.984682');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:27.988200', '2023-07-28 16:47:27.988200'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:27.988200', '2023-07-28 16:47:27.988200');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:27.989184', '2023-07-28 16:47:27.989184'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:27.989184', '2023-07-28 16:47:27.989184')
+2023-07-28 11:47:28.122 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.122 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.122 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.117546', '2023-07-28 16:47:28.117546'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.117546', '2023-07-28 16:47:28.117546');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.117643', '2023-07-28 16:47:28.117643'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.117643', '2023-07-28 16:47:28.117643');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.117701', '2023-07-28 16:47:28.117701'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.117701', '2023-07-28 16:47:28.117701');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.117760', '2023-07-28 16:47:28.117760'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.117760', '2023-07-28 16:47:28.117760');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.117833', '2023-07-28 16:47:28.117833'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.117833', '2023-07-28 16:47:28.117833')
+2023-07-28 11:47:28.131 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.131 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.131 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.128511', '2023-07-28 16:47:28.128511'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.128511', '2023-07-28 16:47:28.128511');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.128567', '2023-07-28 16:47:28.128567'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.128567', '2023-07-28 16:47:28.128567');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.128598', '2023-07-28 16:47:28.128598'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.128598', '2023-07-28 16:47:28.128598');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.128641', '2023-07-28 16:47:28.128641'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.128641', '2023-07-28 16:47:28.128641');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.128677', '2023-07-28 16:47:28.128677'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.128677', '2023-07-28 16:47:28.128677')
+2023-07-28 11:47:28.137 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.137 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.137 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.134634', '2023-07-28 16:47:28.134634'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.134634', '2023-07-28 16:47:28.134634');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.134671', '2023-07-28 16:47:28.134671'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.134671', '2023-07-28 16:47:28.134671');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.134699', '2023-07-28 16:47:28.134699'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.134699', '2023-07-28 16:47:28.134699');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.134731', '2023-07-28 16:47:28.134731'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.134731', '2023-07-28 16:47:28.134731');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.134760', '2023-07-28 16:47:28.134760'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.134760', '2023-07-28 16:47:28.134760')
+2023-07-28 11:47:28.142 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.142 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.142 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.140301', '2023-07-28 16:47:28.140301'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.140301', '2023-07-28 16:47:28.140301');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.140362', '2023-07-28 16:47:28.140362'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.140362', '2023-07-28 16:47:28.140362');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.140392', '2023-07-28 16:47:28.140392'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.140392', '2023-07-28 16:47:28.140392');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.140421', '2023-07-28 16:47:28.140421'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.140421', '2023-07-28 16:47:28.140421');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.140453', '2023-07-28 16:47:28.140453'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.140453', '2023-07-28 16:47:28.140453')
+2023-07-28 11:47:28.149 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.149 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.149 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.146290', '2023-07-28 16:47:28.146290'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.146290', '2023-07-28 16:47:28.146290');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.146339', '2023-07-28 16:47:28.146339'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.146339', '2023-07-28 16:47:28.146339');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.146368', '2023-07-28 16:47:28.146368'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.146368', '2023-07-28 16:47:28.146368');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.146406', '2023-07-28 16:47:28.146406'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.146406', '2023-07-28 16:47:28.146406');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.146441', '2023-07-28 16:47:28.146441'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.146441', '2023-07-28 16:47:28.146441')
+2023-07-28 11:47:28.155 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.155 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.155 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.153183', '2023-07-28 16:47:28.153183'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.153183', '2023-07-28 16:47:28.153183');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.153232', '2023-07-28 16:47:28.153232'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.153232', '2023-07-28 16:47:28.153232');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.153262', '2023-07-28 16:47:28.153262'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.153262', '2023-07-28 16:47:28.153262');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.153297', '2023-07-28 16:47:28.153297'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.153297', '2023-07-28 16:47:28.153297');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.153328', '2023-07-28 16:47:28.153328'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.153328', '2023-07-28 16:47:28.153328')
+2023-07-28 11:47:28.165 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.165 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.165 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.161054', '2023-07-28 16:47:28.161054'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.161054', '2023-07-28 16:47:28.161054');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.161113', '2023-07-28 16:47:28.161113'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.161113', '2023-07-28 16:47:28.161113');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.161179', '2023-07-28 16:47:28.161179'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.161179', '2023-07-28 16:47:28.161179');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.161239', '2023-07-28 16:47:28.161239'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.161239', '2023-07-28 16:47:28.161239');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.161265', '2023-07-28 16:47:28.161265'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.161265', '2023-07-28 16:47:28.161265')
+2023-07-28 11:47:28.176 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.176 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.176 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.171858', '2023-07-28 16:47:28.171858'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.171858', '2023-07-28 16:47:28.171858');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.171927', '2023-07-28 16:47:28.171927'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.171927', '2023-07-28 16:47:28.171927');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.171963', '2023-07-28 16:47:28.171963'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.171963', '2023-07-28 16:47:28.171963');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.172013', '2023-07-28 16:47:28.172013'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.172013', '2023-07-28 16:47:28.172013');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.172052', '2023-07-28 16:47:28.172052'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.172052', '2023-07-28 16:47:28.172052')
+2023-07-28 11:47:28.184 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.184 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.184 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.181089', '2023-07-28 16:47:28.181089'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.181089', '2023-07-28 16:47:28.181089');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.181145', '2023-07-28 16:47:28.181145'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.181145', '2023-07-28 16:47:28.181145');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.181177', '2023-07-28 16:47:28.181177'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.181177', '2023-07-28 16:47:28.181177');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.181210', '2023-07-28 16:47:28.181210'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.181210', '2023-07-28 16:47:28.181210');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.181234', '2023-07-28 16:47:28.181234'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.181234', '2023-07-28 16:47:28.181234')
+2023-07-28 11:47:28.193 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.193 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.193 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.189930', '2023-07-28 16:47:28.189930'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.189930', '2023-07-28 16:47:28.189930');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.189994', '2023-07-28 16:47:28.189994'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.189994', '2023-07-28 16:47:28.189994');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.190033', '2023-07-28 16:47:28.190033'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.190033', '2023-07-28 16:47:28.190033');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.190073', '2023-07-28 16:47:28.190073'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.190073', '2023-07-28 16:47:28.190073');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.190098', '2023-07-28 16:47:28.190098'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.190098', '2023-07-28 16:47:28.190098')
+2023-07-28 11:47:28.201 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.201 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.201 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.197997', '2023-07-28 16:47:28.197997'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.197997', '2023-07-28 16:47:28.197997');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.198064', '2023-07-28 16:47:28.198064'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.198064', '2023-07-28 16:47:28.198064');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.198102', '2023-07-28 16:47:28.198102'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.198102', '2023-07-28 16:47:28.198102');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.198152', '2023-07-28 16:47:28.198152'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.198152', '2023-07-28 16:47:28.198152');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.198180', '2023-07-28 16:47:28.198180'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.198180', '2023-07-28 16:47:28.198180')
+2023-07-28 11:47:28.208 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.208 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.208 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.205025', '2023-07-28 16:47:28.205025'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.205025', '2023-07-28 16:47:28.205025');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.205087', '2023-07-28 16:47:28.205087'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.205087', '2023-07-28 16:47:28.205087');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.205123', '2023-07-28 16:47:28.205123'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.205123', '2023-07-28 16:47:28.205123');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.205162', '2023-07-28 16:47:28.205162'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.205162', '2023-07-28 16:47:28.205162');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.205189', '2023-07-28 16:47:28.205189'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.205189', '2023-07-28 16:47:28.205189')
+2023-07-28 11:47:28.219 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.219 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.219 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.214890', '2023-07-28 16:47:28.214890'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.214890', '2023-07-28 16:47:28.214890');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.214959', '2023-07-28 16:47:28.214959'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.214959', '2023-07-28 16:47:28.214959');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.214998', '2023-07-28 16:47:28.214998'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.214998', '2023-07-28 16:47:28.214998');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.215035', '2023-07-28 16:47:28.215035'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.215035', '2023-07-28 16:47:28.215035');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.215076', '2023-07-28 16:47:28.215076'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.215076', '2023-07-28 16:47:28.215076')
+2023-07-28 11:47:28.227 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.227 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.227 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.223833', '2023-07-28 16:47:28.223833'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.223833', '2023-07-28 16:47:28.223833');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.223900', '2023-07-28 16:47:28.223900'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.223900', '2023-07-28 16:47:28.223900');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.223945', '2023-07-28 16:47:28.223945'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.223945', '2023-07-28 16:47:28.223945');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.223990', '2023-07-28 16:47:28.223990'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.223990', '2023-07-28 16:47:28.223990');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.224020', '2023-07-28 16:47:28.224020'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.224020', '2023-07-28 16:47:28.224020')
+2023-07-28 11:47:28.235 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.235 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.235 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.232189', '2023-07-28 16:47:28.232189'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.232189', '2023-07-28 16:47:28.232189');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.232277', '2023-07-28 16:47:28.232277'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.232277', '2023-07-28 16:47:28.232277');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.232326', '2023-07-28 16:47:28.232326'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.232326', '2023-07-28 16:47:28.232326');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.232380', '2023-07-28 16:47:28.232380'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.232380', '2023-07-28 16:47:28.232380');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.232405', '2023-07-28 16:47:28.232405'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.232405', '2023-07-28 16:47:28.232405')
+2023-07-28 11:47:28.251 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.251 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.251 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.247115', '2023-07-28 16:47:28.247115'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.247115', '2023-07-28 16:47:28.247115');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.247253', '2023-07-28 16:47:28.247253'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.247253', '2023-07-28 16:47:28.247253');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.247304', '2023-07-28 16:47:28.247304'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.247304', '2023-07-28 16:47:28.247304');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.247342', '2023-07-28 16:47:28.247342'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.247342', '2023-07-28 16:47:28.247342');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.247390', '2023-07-28 16:47:28.247390'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.247390', '2023-07-28 16:47:28.247390')
+2023-07-28 11:47:28.263 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.263 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.263 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.259343', '2023-07-28 16:47:28.259343'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.259343', '2023-07-28 16:47:28.259343');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.259426', '2023-07-28 16:47:28.259426'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.259426', '2023-07-28 16:47:28.259426');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.259506', '2023-07-28 16:47:28.259506'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.259506', '2023-07-28 16:47:28.259506');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.259595', '2023-07-28 16:47:28.259595'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.259595', '2023-07-28 16:47:28.259595');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.259622', '2023-07-28 16:47:28.259622'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.259622', '2023-07-28 16:47:28.259622')
+2023-07-28 11:47:28.272 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.272 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.272 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.267937', '2023-07-28 16:47:28.267937'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.267937', '2023-07-28 16:47:28.267937');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.268041', '2023-07-28 16:47:28.268041'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.268041', '2023-07-28 16:47:28.268041');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.268140', '2023-07-28 16:47:28.268140'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.268140', '2023-07-28 16:47:28.268140');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.268206', '2023-07-28 16:47:28.268206'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.268206', '2023-07-28 16:47:28.268206');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.268233', '2023-07-28 16:47:28.268233'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.268233', '2023-07-28 16:47:28.268233')
+2023-07-28 11:47:28.280 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.280 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.280 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.276955', '2023-07-28 16:47:28.276955'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.276955', '2023-07-28 16:47:28.276955');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.277083', '2023-07-28 16:47:28.277083'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.277083', '2023-07-28 16:47:28.277083');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.277121', '2023-07-28 16:47:28.277121'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.277121', '2023-07-28 16:47:28.277121');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.277162', '2023-07-28 16:47:28.277162'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.277162', '2023-07-28 16:47:28.277162');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.277191', '2023-07-28 16:47:28.277191'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.277191', '2023-07-28 16:47:28.277191')
+2023-07-28 11:47:28.286 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.286 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.286 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.284273', '2023-07-28 16:47:28.284273'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.284273', '2023-07-28 16:47:28.284273');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.284325', '2023-07-28 16:47:28.284325'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.284325', '2023-07-28 16:47:28.284325');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.284357', '2023-07-28 16:47:28.284357'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.284357', '2023-07-28 16:47:28.284357');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.284397', '2023-07-28 16:47:28.284397'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.284397', '2023-07-28 16:47:28.284397');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.284426', '2023-07-28 16:47:28.284426'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.284426', '2023-07-28 16:47:28.284426')
+2023-07-28 11:47:28.294 CDT [6163] ERROR:  duplicate key value violates unique constraint "index_users_on_email"
+2023-07-28 11:47:28.294 CDT [6163] DETAIL:  Key (email)=() already exists.
+2023-07-28 11:47:28.294 CDT [6163] STATEMENT:  DELETE FROM "boat_model_options";
+	DELETE FROM "boat_models";
+	DELETE FROM "estimates";
+	DELETE FROM "options";
+	DELETE FROM "users";
+	INSERT INTO "boat_model_options" ("id", "boat_model_id", "option_id", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, '2023-07-28 16:47:28.290330', '2023-07-28 16:47:28.290330'), (298486374, 298486374, 298486374, '2023-07-28 16:47:28.290330', '2023-07-28 16:47:28.290330');
+	INSERT INTO "boat_models" ("id", "length", "beam", "max_hp", "hull_weight", "max_passengers", "price_hull", "price_trailer_hull", "created_at", "updated_at") VALUES (980190962, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.290383', '2023-07-28 16:47:28.290383'), (298486374, 1, 1, 1, 1, 1, 9.99, 9.99, '2023-07-28 16:47:28.290383', '2023-07-28 16:47:28.290383');
+	INSERT INTO "estimates" ("id", "user_id", "boat_model_id", "subtotal", "tax", "vit", "doc_fee", "registration", "total_price", "created_at", "updated_at") VALUES (980190962, 980190962, 980190962, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.290423', '2023-07-28 16:47:28.290423'), (298486374, 298486374, 298486374, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, '2023-07-28 16:47:28.290423', '2023-07-28 16:47:28.290423');
+	INSERT INTO "options" ("id", "name", "description", "price", "option_type", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.290457', '2023-07-28 16:47:28.290457'), (298486374, 'MyString', 'MyText', 9.99, 'MyString', '2023-07-28 16:47:28.290457', '2023-07-28 16:47:28.290457');
+	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.290481', '2023-07-28 16:47:28.290481'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.290481', '2023-07-28 16:47:28.290481')
+2023-07-29 12:10:15.511 CDT [4368] WARNING:  worker took too long to start; canceled
+2023-07-29 12:10:15.755 CDT [16973] WARNING:  autovacuum worker started without a worker entry

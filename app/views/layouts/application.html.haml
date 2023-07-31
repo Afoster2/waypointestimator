@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title WaypointEstimator
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+  %body.prose.mx-auto.max-w-full
+    - flash.each do |name, msg|
+      = content_tag(:div, msg, class: "callout msg-alert alert-#{name}")
+    = render 'layouts/header'
+    = yield
