@@ -2,12 +2,11 @@
   .col-span-2
     = f.label :name
     = f.text_field :name, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-  .col-span-3
+  .col-span-2
     = f.label :description
     = f.text_field:description, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
   .col-span-1
     = f.label :price
     = f.number_field :price, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-  .col-span-2
-    = f.check_box :_destroy
-    = f.label :_destroy, "Remove this feature"
+  .col-span-1
+    %button.my-7.bg-red-500.hover:bg-red-700.text-white.font-bold.py-2.px-4.rounded{:onclick => "this.parentNode.parentNode.remove()", :type => "button"} Remove
