@@ -1,33 +1,215 @@
-%h1= @boat_model.name
+.mx-auto.py-12.w-full{:class => "md:w-3/4"}
+  .bg-gray-100.p-20
+    = link_to 'Edit', edit_boat_model_path(@boat_model), class: 'mt-5 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline float-right'
+    %h1.uppercase
+      = @boat_model.name
+    
+    //hullprice
+    .grid.grid-cols-1.md:grid-cols-4
+      .col-start-1.outline.outline-blue-500
+        .text-lg.p-3.bg-blue-500.font-bold.text-right.text-white Base Hull Price
+      .col-span-1.outline.text-right.outline-blue-500.md:mr-2
+        .text-lg.p-3.font-bold.text-blue-500
+          = number_to_currency @boat_model.price_hull
 
-%ul.list-disc.ml-5
-  %li
-    %strong Stock Number:
-    = @boat_model.stock_number
-  %li
-    %strong Style:
-    = @boat_model.style
-  %li
-    %strong Length:
-    = @boat_model.length
-  %li
-    %strong Beam:
-    = @boat_model.beam
-  %li
-    %strong Max HP:
-    = @boat_model.max_hp
-  %li
-    %strong Hull Weight:
-    = @boat_model.hull_weight
-  %li
-    %strong Max Passengers:
-    = @boat_model.max_passengers
-  %li
-    %strong Price of Hull Only:
-    = @boat_model.price_hull
-  %li
-    %strong Price with Trailer & Hull:
-    = @boat_model.price_trailer_hull
+      //hull&trailer
+      .col-span-1.outline.outline-orange-500.md:ml-2
+        .text-lg.p-3.bg-orange-500.font-bold.text-right.text-white Hull & Trailer Price
+      .col-span-1.outline.text-right.outline-orange-500
+        .text-lg.p-3.font-bold.text-orange-500
+          = number_to_currency @boat_model.price_trailer_hull
 
-= link_to 'Edit', edit_boat_model_path(@boat_model), class: 'mt-5 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
-= link_to 'Back', boat_models_path, class: 'mt-5 ml-3 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+    %hr.h-px.my-8.bg-gray-700.border-0
+
+    .grid.grid-cols-1.md:grid-cols-2
+      .col-span-1.md:mr-2
+        %h2.mt-0 Stock Info
+        .grid.grid-cols-4.gap-0
+          .col-start-auto.col-span-1.outline.outline-gray-300
+            .text-xs.p-3.bg-gray-300.font-bold Stock #:
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.font-bold
+              = @boat_model.stock_number
+
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.bg-gray-300.font-bold Hull Style:
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.font-bold
+              = @boat_model.style
+          
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.bg-gray-300.font-bold Act Lgth:
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.font-bold
+              = @boat_model.length
+
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.bg-gray-300.font-bold Beam:
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.font-bold
+              = @boat_model.beam
+
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.bg-gray-300.font-bold MaxHP:
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.font-bold
+              = @boat_model.max_hp
+
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.bg-gray-300.font-bold Hull Wght:
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.font-bold
+              = @boat_model.hull_weight
+
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.bg-gray-300.font-bold Passangers:
+          .col-span-1.outline.outline-gray-300
+            .text-xs.p-3.font-bold
+              = @boat_model.max_passengers
+        %br
+
+      .col-span-1.md:ml-2
+        %h2.mt-0 Standard Features
+        .grid.grid-cols-1
+          - @boat_model.standard_features.each do |feature|
+            .text-sm
+              = feature.name
+              %span.float-right
+                = number_to_currency(feature.price)
+
+    %hr.h-px.my-8.bg-gray-700.border-0
+      
+    .grid.grid-cols-1.md:grid-cols-2
+      .col-span-1.md:mr-2
+        %h2.mt-0 Power Options
+        .grid.grid-cols-1
+          - @boat_model.power_options.each do |option|
+            .text-sm
+              = option.brand
+              = option.model_number
+              %span.float-right
+                = number_to_currency(option.price)
+        %br 
+
+      .col-span-1.md:ml-2
+        %h2.mt-0 Console Options
+        .grid.grid-cols-1
+          - @boat_model.console_options.each do |option|
+            .text-sm
+              = option.name
+              %span.float-right
+                = number_to_currency(option.price)
+
+    %hr.h-px.my-8.bg-gray-700.border-0
+      
+    .grid.grid-cols-1.md:grid-cols-2
+      .col-span-1.md:mr-2
+        %h2.mt-0 Factory Options
+        .grid.grid-cols-1
+          - @boat_model.factory_options.each do |option|
+            .text-sm
+              = option.name
+              %span.float-right
+                =  number_to_currency(option.price)
+        %br 
+
+      .col-span-1.md:ml-2
+        %h2.mt-0 Gauge Options
+        .grid.grid-cols-1
+          - @boat_model.gauge_upgrades.each do |upgrade|
+            .text-sm
+              = upgrade.name
+              %span.float-right
+                = number_to_currency(upgrade.price)
+
+    %hr.h-px.my-8.bg-gray-700.border-0
+      
+    .grid.grid-cols-1.md:grid-cols-2
+      .col-span-1.md:mr-2
+        %h2.mt-0 Seating Options
+        .grid.grid-cols-1
+          - @boat_model.seating_options.each do |option|
+            .text-sm
+              = option.name
+              %span.float-right
+                = number_to_currency(option.price)
+        %br 
+
+      .col-span-1.md:ml-2
+        %h2.mt-0 Aluminum Options
+        .grid.grid-cols-1
+          - @boat_model.aluminum_options.each do |option|
+            .text-sm
+              = option.name
+              %span.float-right
+                = number_to_currency(option.price)
+
+    %hr.h-px.my-8.bg-gray-700.border-0
+      
+    .grid.grid-cols-1.md:grid-cols-2
+      .col-span-1.md:mr-2
+        %h2.mt-0 Lighting Options
+        .grid.grid-cols-1
+          - @boat_model.lighting_options.each do |option|
+            .text-sm
+              = option.name
+              %span.float-right
+                = number_to_currency(option.price)
+        %br 
+
+      .col-span-1.md:ml-2
+        %h2.mt-0 Finishing Options
+        .grid.grid-cols-1
+          - @boat_model.finishing_options.each do |option|
+            .text-sm
+              = option.name
+              %span.float-right
+                = number_to_currency(option.price)
+
+    %hr.h-px.my-8.bg-gray-700.border-0
+      
+    .grid.grid-cols-1.md:grid-cols-2
+      .col-span-1.md:mr-2
+        %h2.mt-0 Cooler Options
+        .grid.grid-cols-1
+          - @boat_model.lighting_options.each do |option|
+            .text-sm
+              = option.name
+              %span.float-right
+                = number_to_currency(option.price)
+        %br 
+
+      .col-span-1.md:ml-2
+        %h2.mt-0 Wetsound Packages
+        .grid.grid-cols-1
+          - @boat_model.wetsound_packages.each do |package|
+            .text-sm
+              = package.name
+              %span.float-right
+                = number_to_currency(package.price)
+
+    %hr.h-px.my-8.bg-gray-700.border-0
+      
+    .grid.grid-cols-1.md:grid-cols-2
+      .col-span-1.md:mr-2
+        %h2.mt-0 Additional Options
+        .grid.grid-cols-1
+          - @boat_model.additional_options.each do |option|
+            .text-sm
+              = option.name
+              %span.float-right
+                = number_to_currency(option.price)
+        %br 
+
+      .col-span-1.md:ml-2
+        %h2.mt-0 Trailer Upgrades
+        .grid.grid-cols-1
+          - @boat_model.trailer_upgrades.each do |upgrade|
+            .text-sm
+              = upgrade.name
+              %span.float-right
+                = number_to_currency(upgrade.price)
+
+.mx-auto.py-12.w-full{:class => "md:w-3/4"}
+  = link_to 'Edit', edit_boat_model_path(@boat_model), class: 'mt-5 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline'
+  = link_to 'Back', boat_models_path, class: 'mt-5 ml-3 inline-block bg-gray-300 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline'

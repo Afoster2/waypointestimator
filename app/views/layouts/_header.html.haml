@@ -1,17 +1,19 @@
 .bg-gray-100
-  .xs:grid-cols-5.sm:grid-cols-5.md:grid-cols-3.grid.lg:grid-cols-9
-    .xs:auto-cols-auto.sm:col-start-2.md:col-start-2.lg:col-start-2.gap-4
-      = link_to image_tag('waypoint.svg', alt:"Waypoint Marine"), root_path
-    .xs:auto-cols-auto.sm:col-start-2.md:col-start-2.lg:col-span-6.py-3
-      - if user_signed_in?
-        = link_to "Log out", destroy_user_session_path, method: :delete, class:"bg-red-500 hover:bg-red-700 text-white font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center float-right z-50 m-5"
-      - else
-        = link_to 'Sign In', new_user_session_path, class:"bg-red-500 hover:bg-red-700 text-white font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center float-right z-50 m-5"
+  .mx-auto.px-12.mt-4.w-full{:class => "md:w-3/4"}
+    .grid.grid-cols-3.md:grid-cols-9
+      .col-span-2
+        = link_to image_tag('waypoint.svg', alt:"Waypoint Marine"), root_path
+      .col-start-8.col-span-2.text-xs.float-right
+        - if user_signed_in?
+          = link_to "Log out", destroy_user_session_path, method: :delete, class:"bg-red-500 hover:bg-red-700 text-white font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center float-right z-50 m-5"
+        - else
+          = link_to 'Sign In', new_user_session_path, class:"bg-red-500 hover:bg-red-700 text-white font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center float-right z-50 m-5"
 
 
-.grid.grid-column-11.place-content-center.py-4.h-24
-  .col-start-4.col-span-auto.content-center.w-54
-    = link_to 'Dashboard', root_path, class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center"
-    = link_to 'Estimates', root_path, class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center"
-    = link_to 'Boats', boat_models_path, class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center"
-    = link_to 'Customers', root_path, class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center"
+.bg-gray-300
+  .grid.grid-column-11.place-content-center.py-4.h-20
+    .col-start-4.col-span-auto.content-center.w-54
+      = link_to 'Dashboard', root_path, class:"bg-gray-400 hover:bg-gray-500 text-black font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center"
+      = link_to 'Estimates', root_path, class:"bg-gray-400 hover:bg-gray-500 text-black font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center"
+      = link_to 'Boats', boat_models_path, class:"bg-gray-400 hover:bg-gray-500 text-black font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center"
+      = link_to 'Customers', root_path, class:"bg-gray-400 hover:bg-gray-500 text-black font-bold py-3 px-8 rounded uppercase focus:outline-none focus:shadow-outline no-underline text-center"

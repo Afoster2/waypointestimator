@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_084814) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_01_012840) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_084814) do
     t.index ["boat_model_id"], name: "index_cooler_options_on_boat_model_id"
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone"
+    t.text "address"
+    t.integer "salesperson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "estimates", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "boat_model_id", null: false
@@ -144,7 +155,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_084814) do
   end
 
   create_table "power_options", force: :cascade do |t|
-    t.string "name"
+    t.string "model_number"
     t.text "description"
     t.decimal "price"
     t.string "engine_model"
@@ -154,6 +165,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_084814) do
     t.bigint "boat_model_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "brand"
     t.index ["boat_model_id"], name: "index_power_options_on_boat_model_id"
   end
 

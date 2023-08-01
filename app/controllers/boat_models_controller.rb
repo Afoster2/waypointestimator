@@ -41,9 +41,14 @@ class BoatModelsController < ApplicationController
 
   # DELETE /boat_models/1
   def destroy
+    @boat_model = BoatModel.find(params[:id])
     @boat_model.destroy
-    redirect_to boat_models_url, notice: 'Boat model was successfully destroyed.'
+    respond_to do |format|
+      format.turbo_stream { redirect_to boat_models_path, status: :see_other }
+      format.html { redirect_to boat_models_path, notice: 'Boat model was successfully destroyed.' }
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -55,7 +60,7 @@ class BoatModelsController < ApplicationController
     def boat_model_params
       params.require(:boat_model).permit(:length, :beam, :max_hp, :hull_weight, :max_passengers, :price_hull, :price_trailer_hull, :name, :stock_number, :style, :year, 
         standard_features_attributes: [:id, :name, :description, :price, :_destroy],
-        power_options_attributes: [:id, :name, :description, :price, :engine_model, :engine_make, :year, :serial_number, :_destroy],
+        power_options_attributes: [:id, :brand, :model_number, :description, :price, :engine_model, :engine_make, :year, :serial_number, :_destroy],
         console_options_attributes: [:id, :name, :description, :price, :_destroy],
         factory_options_attributes: [:id, :name, :description, :price, :_destroy],
         gauge_upgrades_attributes: [:id, :name, :description, :price, :_destroy],

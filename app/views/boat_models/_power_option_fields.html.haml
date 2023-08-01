@@ -1,0 +1,15 @@
+.grid.grid-cols-6.gap-4
+  .col-span-1
+    = f.label :brand
+    = f.text_field :brand, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+  .col-span-1
+    = f.label :model_number
+    = f.text_field :model_number, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+  .col-span-2
+    = f.label :description
+    = f.text_field:description, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+  .col-span-1
+    = f.label :price
+    = f.number_field :price, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+  .col-span-1
+    %button.my-7.bg-red-500.hover:bg-red-700.text-white.font-bold.py-2.px-4.rounded{:onclick => "this.parentNode.parentNode.remove()", :type => "button"} Remove

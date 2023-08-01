@@ -53,13 +53,134 @@
     //standard features section
     .grid.grid-cols-6.gap-4.bg-gray-100.px-10.my-4
       .col-span-6
-        %h3 Standard Features
+        %h2 Standard Features
         #standard_features
-          = form.fields_for :standard_features do |standard_feature_form|
-            = render 'standard_feature_fields', f: standard_feature_form
+          = form.fields_for :standard_features do |standard_feature|
+            = render 'standard_feature_fields', f: standard_feature
         .my-4
           = link_to 'Add Standard Feature', '#', data: { controller: "boat-model", action: "boat-model#addStandardFeature" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
         %br/
+
+    .grid.grid-cols-6.gap-4.bg-white.px-10.my-4
+      .col-span-6
+        %h2 Power Options
+        #power_options
+          = form.fields_for :power_options do |power_option|
+            = render 'power_option_fields', f: power_option
+        .my-4
+          = link_to 'Add Power Option', '#', data: { controller: "boat-model", action: "boat-model#addPowerOption" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-gray-100.px-10.my-4        
+      .col-span-6
+        %h2 Console Options
+        #console_options
+          = form.fields_for :console_options do |console_option|
+            = render 'console_option_fields', f: console_option
+        .my-4
+          = link_to 'Add Console Option', '#', data: { controller: "boat-model", action: "boat-model#addConsoleOption" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-white.px-10.my-4        
+      .col-span-6
+        %h2 Factory Options
+        #factory_options
+          = form.fields_for :factory_options do |factory_option|
+            = render 'factory_option_fields', f: factory_option
+        .my-4
+          = link_to 'Add Factory Option', '#', data: { controller: "boat-model", action: "boat-model#addFactoryOption" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-gray-100.px-10.my-4        
+      .col-span-6
+        %h2 Gauge Upgrades
+        #gauge_upgrades
+          = form.fields_for :gauge_upgrades do |gauge_upgrade|
+            = render 'gauge_upgrade_fields', f: gauge_upgrade
+        .my-4
+          = link_to 'Add Gauge Upgrade', '#', data: { controller: "boat-model", action: "boat-model#addGaugeUpgrade" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-white.px-10.my-4        
+      .col-span-6
+        %h2 Seating Options
+        #seating_options
+          = form.fields_for :seating_options do |seating_option|
+            = render 'seating_option_fields', f: seating_option
+        .my-4
+          = link_to 'Add Seating Option', '#', data: { controller: "boat-model", action: "boat-model#addSeatingOption" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-gray-100.px-10.my-4        
+      .col-span-6
+        %h2 Aluminum Options
+        #aluminum_options
+          = form.fields_for :aluminum_options do |aluminum_option|
+            = render 'aluminum_option_fields', f: aluminum_option
+        .my-4
+          = link_to 'Add Aluminum Option', '#', data: { controller: "boat-model", action: "boat-model#addAluminumOption" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-white.px-10.my-4        
+      .col-span-6
+        %h2 Lighting Options
+        #lighting_options
+          = form.fields_for :lighting_options do |lighting_option|
+            = render 'lighting_option_fields', f: lighting_option
+        .my-4
+          = link_to 'Add Lighting Option', '#', data: { controller: "boat-model", action: "boat-model#addLightingOption" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-gray-100.px-10.my-4        
+      .col-span-6
+        %h2 Finishing Options
+        #finishing_options
+          = form.fields_for :finishing_options do |finishing_option|
+            = render 'finishing_option_fields', f: finishing_option
+        .my-4
+          = link_to 'Add Finishing Option', '#', data: { controller: "boat-model", action: "boat-model#addFinishingOption" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-white.px-10.my-4        
+      .col-span-6
+        %h2 Cooler Options
+        #cooler_options
+          = form.fields_for :cooler_options do |cooler_option|
+            = render 'cooler_option_fields', f: cooler_option
+        .my-4
+          = link_to 'Add Cooler Option', '#', data: { controller: "boat-model", action: "boat-model#addCoolerOption" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-gray-100.px-10.my-4        
+      .col-span-6
+        %h2 Wetsound Packages
+        #wetsound_packages
+          = form.fields_for :wetsound_packages do |wetsound_package|
+            = render 'wetsound_package_fields', f: wetsound_package
+        .my-4
+          = link_to 'Add Wetsound Package', '#', data: { controller: "boat-model", action: "boat-model#addWetsoundPackage" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-white.px-10.my-4        
+      .col-span-6
+        %h2 Additional Options
+        #additional_options
+          = form.fields_for :additional_options do |additional_option|
+            = render 'additional_option_fields', f: additional_option
+        .my-4
+          = link_to 'Add Additional Option', '#', data: { controller: "boat-model", action: "boat-model#addAdditionalOption" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+
+    .grid.grid-cols-6.gap-4.bg-gray-100.px-10.my-4        
+      .col-span-6
+        %h2 Trailer Upgrades
+        #trailer_upgrades
+          = form.fields_for :trailer_upgrades do |trailer_upgrade|
+            = render 'trailer_upgrade_fields', f: trailer_upgrade
+        .my-4
+          = link_to 'Add Trailer Upgrade', '#', data: { controller: "boat-model", action: "boat-model#addTrailerUpgrade" }, class:"bg-green-500 hover:bg-green-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline"
+        %br/
+        
 
     = form.submit class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'
 
