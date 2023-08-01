@@ -16,30 +16,28 @@ class CustomersController < ApplicationController
   end
 
   # GET /customers/1/edit
-	def edit
-	  @customer = Customer.find(params[:id])
-	end
+  def edit
+  end
 
   # POST /customers
-	def create
-	  @customer = current_user.customers.build(customer_params)
+  def create
+    @customer = current_user.customers.build(customer_params)
 
-	  if @customer.save
-	    redirect_to @customer, notice: 'Customer was successfully created.'
-	  else
-	    render :new
-	  end
-	end
+    if @customer.save
+      redirect_to @customer, notice: 'Customer was successfully created.'
+    else
+      render :new
+    end
+  end
 
   # PATCH/PUT /customers/1
-	def update
-	  @customer = Customer.find(params[:id])
-	  if @customer.update(customer_params)
-	    redirect_to @customer
-	  else
-	    render :edit
-	  end
-	end
+  def update
+    if @customer.update(customer_params)
+      redirect_to @customer, notice: 'Customer was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   # DELETE /customers/1
   def destroy
@@ -56,5 +54,6 @@ class CustomersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def customer_params
       params.require(:customer).permit(:first_name, :last_name, :email, :phone, :address, :address2, :city, :state, :zip, :date_contacted, :location, :notes)
+      # Removed :salesperson_id from the list of permitted parameters
     end
 end

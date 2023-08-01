@@ -1,16 +1,55 @@
-%h1.text-3xl.font-bold.mb-4= @customer.first_name + " " + @customer.last_name
+.mx-auto.pt-12.w-full{:class => "md:w-3/4"}
+  .bg-gray-200.p-20
+    = link_to 'Edit', edit_customer_path(@customer), class: 'mt-5 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline float-right'
+    %p.font-bold.text-gray-400.mb-1 CUSTOMER NAME:
+    %h1.uppercase
+      = @customer.first_name + " " + @customer.last_name
+    %p.mb-1
+      %strong Address:
+    %p.mb-1
+      = @customer.address
+      ,
+      = @customer.address2
+      ,
+      = @customer.city
+      ,
+      = @customer.state
+      ,
+      = @customer.zip
 
-%p.mb-2
-  %strong Email:
-  = @customer.email
+  .bg-gray-100.p-10
+    .grid.grid-cols-1.md:grid-cols-4
+      .col-span-2
+        .bg-white.py-5.px-10.outline.ouline-black.outline-4
+          %p.mb-2
+            %strong Last Contacted:
+            = @customer.date_contacted.strftime("%b %d, %Y")
+          %p.mb-2 
+            %strong Storefront Location:
+            = @customer.location
+          %p.mb-2 
+            %strong Salesperson:
+            = @customer.user.email
 
-%p.mb-2
-  %strong Phone:
-  = @customer.phone
+      .col-span-2
+        .py-5.px-10
+          %p.mb-2
+            %strong Main Email:
+            = mail_to @customer.email, class:"no-underline md:float-right"
+          %p.mb-2
+            %strong Additional Email:
+            = mail_to @customer.email, class:"no-underline md:float-right"
+          %p.mb-2
+            %strong Phone:
+            = link_to number_to_phone(@customer.phone), "tel: @customer.phone", class:"no-underline md:float-right"
 
-%p.mb-2
-  %strong Address:
-  = @customer.address
+    .bg-white.px-10.py-5.mt-5
+      %h4.mb-1
+        %strong Customer notes:
+      %p
+        = @customer.notes
 
-= link_to 'Edit', edit_customer_path(@customer), class: "px-4 py-2 bg-yellow-500 text-white rounded mr-2"
-= link_to 'Back', customers_path, class: "px-4 py-2 bg-blue-500 text-white rounded"
+.mx-auto.my-5.w-full{:class => "md:w-3/4"}
+  = link_to 'Edit', edit_customer_path(@customer), class: 'mt-5 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline'
+  = link_to 'Back', customers_path, class: 'mt-5 ml-3 inline-block bg-gray-300 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline'
+

@@ -270,3 +270,5 @@
 	INSERT INTO "users" ("id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (980190962, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.290481', '2023-07-28 16:47:28.290481'), (298486374, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, '2023-07-28 16:47:28.290481', '2023-07-28 16:47:28.290481')
 2023-07-29 12:10:15.511 CDT [4368] WARNING:  worker took too long to start; canceled
 2023-07-29 12:10:15.755 CDT [16973] WARNING:  autovacuum worker started without a worker entry
+2023-07-31 22:13:18.450 CDT [38898] ERROR:  cached plan must not change result type
+2023-07-31 22:13:18.450 CDT [38898] STATEMENT:  SELECT "customers".* FROM "customers" WHERE "customers"."user_id" = $1
