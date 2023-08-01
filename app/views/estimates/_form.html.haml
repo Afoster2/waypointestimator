@@ -1,11 +1,98 @@
-= form_with(model: estimate, class: "contents") do |form|
+= form_with(model: estimate, local: true, data: { controller: "options" }) do |form|
   - if estimate.errors.any?
-    #error_explanation.bg-red-50.text-red-500.px-3.py-2.font-medium.rounded-lg.mt-3
-      %h2
-        = pluralize(estimate.errors.count, "error")
-        prohibited this estimate from being saved:
+    #error_explanation
+      %h2= "#{pluralize(estimate.errors.count, "error")} prohibited this estimate from being saved:"
       %ul
-        - estimate.errors.each do |error|
-          %li= error.full_message
-  .inline
-    = form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"
+        - estimate.errors.full_messages.each do |message|
+          %li= message
+
+  .grid.grid-cols-6.gap-4
+    .col-span-1
+      = form.label :customer_id, class: 'block text-gray-700 text-sm font-bold mb-2'
+      = form.select :customer_id, Customer.all.map { |c| ["#{c.first_name} #{c.last_name}", c.id] }, class: 'shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+    .col-span-1
+      = form.label :boat_model_id, class: 'block text-gray-700 text-sm font-bold mb-2'
+      = form.select :boat_model_id, BoatModel.all.map { |b| [b.name, b.id] }, class: 'shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+    .col-span-1
+      = form.label :subtotal, class: 'block text-gray-700 text-sm font-bold mb-2'
+      = form.number_field :subtotal, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+    .col-span-1
+      = form.label :tax, class: 'block text-gray-700 text-sm font-bold mb-2'
+      = form.number_field :tax, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+    .col-span-1
+      = form.label :vit, class: 'block text-gray-700 text-sm font-bold mb-2'
+      = form.number_field :vit, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+    .col-span-1
+      = form.label :doc_fee, class: 'block text-gray-700 text-sm font-bold mb-2'
+      = form.number_field :doc_fee, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+    .col-span-1
+      = form.label :registration, class: 'block text-gray-700 text-sm font-bold mb-2'
+      = form.number_field :registration, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+    .col-span-1
+      = form.label :total_price, class: 'block text-gray-700 text-sm font-bold mb-2'
+      = form.number_field :total_price, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+    .col-span-2
+      = form.label :options, class: 'block text-gray-700 text-sm font-bold mb-2'
+      - @boat_model.standard_features.each do |option|
+        = check_box_tag 'estimate[standard_feature_ids][]', option.id, @estimate.standard_feature_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.power_options.each do |option|
+        = check_box_tag 'estimate[power_option_ids][]', option.id, @estimate.power_option_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.model_number
+
+      - @boat_model.console_options.each do |option|
+        = check_box_tag 'estimate[console_option_ids][]', option.id, @estimate.console_option_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.factory_options.each do |option|
+        = check_box_tag 'estimate[factory_option_ids][]', option.id, @estimate.factory_option_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.gauge_upgrades.each do |option|
+        = check_box_tag 'estimate[gauge_upgrade_ids][]', option.id, @estimate.gauge_upgrade_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.seating_options.each do |option|
+        = check_box_tag 'estimate[seating_option_ids][]', option.id, @estimate.seating_option_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.aluminum_options.each do |option|
+        = check_box_tag 'estimate[aluminum_option_ids][]', option.id, @estimate.aluminum_option_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.lighting_options.each do |option|
+        = check_box_tag 'estimate[lighting_option_ids][]', option.id, @estimate.lighting_option_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.finishing_options.each do |option|
+        = check_box_tag 'estimate[finishing_option_ids][]', option.id, @estimate.finishing_option_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.cooler_options.each do |option|
+        = check_box_tag 'estimate[cooler_option_ids][]', option.id, @estimate.cooler_option_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.wetsound_packages.each do |option|
+        = check_box_tag 'estimate[wetsound_package_ids][]', option.id, @estimate.wetsound_package_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.additional_options.each do |option|
+        = check_box_tag 'estimate[additional_option_ids][]', option.id, @estimate.additional_option_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+      - @boat_model.trailer_upgrades.each do |option|
+        = check_box_tag 'estimate[trailer_upgrade_ids][]', option.id, @estimate.trailer_upgrade_ids.include?(option.id), id: dom_id(option)
+        = label_tag dom_id(option), option.name
+
+
+  .actions
+    = form.submit class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'

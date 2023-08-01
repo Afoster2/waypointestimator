@@ -1,8 +1,8 @@
-.w-full
-  - if notice.present?
-    %p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block= notice
-  .flex.justify-between.items-center
-    %h1.font-bold.text-4xl Estimates
-    = link_to 'New estimate', new_estimate_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
+- if notice.present?
+  %p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block= notice
+.mx-auto.py-4.w-full{:class => "md:w-10/12"}
+  %h1.py-10 Estimates
+  = link_to 'New estimate', new_estimate_path, class: "px-4 py-2 bg-green-500 text-white rounded no-underline"
+    
   #estimates.min-w-full
     = render @estimates

@@ -13,24 +13,23 @@ class EstimatesController < ApplicationController
   # GET /estimates/new
   def new
     @estimate = Estimate.new
+    @boat_model = BoatModel.new
   end
 
   # GET /estimates/1/edit
   def edit
+    @estimate = Estimate.find(params[:id])
+    @boat_model = @estimate.boat_model
   end
 
   # POST /estimates or /estimates.json
   def create
-    @estimate = Estimate.new(estimate_params)
+    @estimate = current_user.estimates.build(estimate_params)
 
-    respond_to do |format|
-      if @estimate.save
-        format.html { redirect_to estimate_url(@estimate), notice: "Estimate was successfully created." }
-        format.json { render :show, status: :created, location: @estimate }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @estimate.errors, status: :unprocessable_entity }
-      end
+    if @estimate.save
+      redirect_to @estimate, notice: 'Estimate was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -65,6 +64,9 @@ class EstimatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def estimate_params
-      params.fetch(:estimate, {})
+      params.require(:estimate).permit(:user_id, :boat_model_id, :subtotal, :tax, :vit, :doc_fee, :registration, :total_price, option_ids: [])
     end
+
+
+
 end

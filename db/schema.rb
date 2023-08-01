@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_01_031033) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_01_151257) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -98,6 +98,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_031033) do
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
+  create_table "estimate_options", force: :cascade do |t|
+    t.bigint "estimate_id", null: false
+    t.bigint "option_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estimate_id"], name: "index_estimate_options_on_estimate_id"
+    t.index ["option_id"], name: "index_estimate_options_on_option_id"
+  end
+
   create_table "estimates", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "boat_model_id", null: false
@@ -109,6 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_031033) do
     t.decimal "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
     t.index ["boat_model_id"], name: "index_estimates_on_boat_model_id"
     t.index ["user_id"], name: "index_estimates_on_user_id"
   end
@@ -254,6 +264,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_031033) do
   add_foreign_key "console_options", "boat_models"
   add_foreign_key "cooler_options", "boat_models"
   add_foreign_key "customers", "users"
+  add_foreign_key "estimate_options", "estimates"
+  add_foreign_key "estimate_options", "options"
   add_foreign_key "estimates", "boat_models"
   add_foreign_key "estimates", "users"
   add_foreign_key "factory_options", "boat_models"

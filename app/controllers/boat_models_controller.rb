@@ -49,6 +49,25 @@ class BoatModelsController < ApplicationController
     end
   end
 
+  # GET /boat_models/1/options
+  def options
+    @boat_model = BoatModel.find(params[:id])
+    @standard_features = @boat_model.standard_features
+    @power_options = @boat_model.power_options
+    @console_options = @boat_model.console_options
+    @factory_options = @boat_model.factory_options
+    @gauge_upgrades = @boat_model.gauge_upgrades
+    @seating_options = @boat_model.seating_options
+    @aluminum_options = @boat_model.aluminum_options
+    @lighting_options = @boat_model.lighting_options
+    @finishing_options = @boat_model.finishing_options
+    @cooler_options = @boat_model.cooler_options
+    @wetsound_packages = @boat_model.wetsound_packages
+    @additional_options = @boat_model.additional_options
+    @trailer_upgrades = @boat_model.trailer_upgrades
+    render layout: false
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -74,5 +93,4 @@ class BoatModelsController < ApplicationController
         trailer_upgrades_attributes: [:id, :name, :description, :price, :_destroy]
       )
     end
-
 end
