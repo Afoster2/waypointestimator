@@ -1,0 +1,26 @@
+.mx-auto.py-4.w-full{:class => "md:w-10/12"}
+  %h1.text-3xl.font-bold.mb-4 Customers
+
+  %table.table-auto.w-full.mb-4
+    %thead
+      %tr
+        %th.px-4.py-2 First Name
+        %th.px-4.py-2 Last Name
+        %th.px-4.py-2 Email
+        %th.px-4.py-2 Phone
+        %th.px-4.py-2 Address
+        %th.px-4.py-2 Actions
+    %tbody
+      - @customers.each do |customer|
+        %tr
+          %td.px-4.py-2
+            = link_to customer.first_name, customer
+          %td.px-4.py-2= customer.last_name
+          %td.px-4.py-2= customer.email
+          %td.px-4.py-2= customer.phone
+
+          %td.px-4.py-2.flex.space-x-2
+            = link_to 'Edit', edit_customer_path(customer), class: "px-2 py-1 bg-gray-500 text-white rounded no-underline"
+            = link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "px-2 py-1 bg-red-500 text-white rounded no-underline"
+
+  = link_to 'New Customer', new_customer_path, class: "px-4 py-2 bg-green-500 text-white rounded no-underline"

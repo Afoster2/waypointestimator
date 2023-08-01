@@ -1,0 +1,7 @@
+.mx-auto.py-12.w-full{:class => "md:w-2/3"}
+  %h1.font-bold.text-4xl Editing Customer
+
+= render 'form', customer: @customer
+
+= link_to 'Show', @customer, class: "px-4 py-2 bg-blue-500 text-white rounded mr-2"
+= link_to 'Back', customers_path, class: "px-4 py-2 bg-blue-500 text-white rounded"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_01_012840) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_01_021607) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,6 +88,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_012840) do
     t.integer "salesperson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.date "date_contacted"
+    t.string "location"
+    t.text "notes"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "estimates", force: :cascade do |t|
@@ -245,6 +254,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_012840) do
   add_foreign_key "boat_model_options", "options"
   add_foreign_key "console_options", "boat_models"
   add_foreign_key "cooler_options", "boat_models"
+  add_foreign_key "customers", "users"
   add_foreign_key "estimates", "boat_models"
   add_foreign_key "estimates", "users"
   add_foreign_key "factory_options", "boat_models"

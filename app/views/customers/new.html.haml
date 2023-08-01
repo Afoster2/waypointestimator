@@ -1,0 +1,4 @@
+.mx-auto.py-12.w-full{:class => "md:w-2/3"}
+  %h1.font-bold.text-4xl New Customer
+  = render 'form', customer: @customer
+  = link_to 'Back', customers_path, class: "my-5 rounded-lg py-3 px-5 bg-gray-100 inline-block font-bold text-gray-500 hover:bg-gray-200 no-underline"
