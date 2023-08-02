@@ -1,10 +1,13 @@
 import { Controller } from "stimulus"
+import $ from 'jquery';
+import 'select2';
 
 export default class extends Controller {
-  static targets = ["boatModelSelect", "options"]
+  static targets = ["boatModelSelect", "options", "customerSelect"]
 
   connect() {
     this.boatModelSelectTarget.addEventListener("change", this.updateOptions.bind(this))
+    $(this.customerSelectTarget).select2();
   }
 
   updateOptions() {

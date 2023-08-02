@@ -2,8 +2,4 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import 'select2';
-
-
-$(document).ready(function() {
-    $('#customer_select').select2();
-});
+import 'select2/dist/css/select2.css';

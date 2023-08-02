@@ -15,9 +15,7 @@
       - @customers.each do |customer|
         %tr
           %td.px-4.py-2
-            = link_to customer do
-              = customer.first_name
-              = customer.last_name
+            = link_to customer.full_name, customer
           %td.px-4.py-2= customer.date_contacted.strftime("%b %d, %Y")
           %td.px-4.py-2= customer.location
           %td.px-4.py-2= customer.email
