@@ -24,24 +24,25 @@
   .grid.grid-cols-6.gap-4
     .col-span-4
       %h6 BILL TO
-      = form.select :customer_id, Customer.all.map { |c| [c.first_name + " " + c.last_name, c.id] }, { }, { class: 'shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', data: { action: "change->customer#updateInfo", options_target: "customerSelect" } }
+      = form_with(model: estimate, local: true, data: { controller: "customer" }) do |form|
+        = form.select :customer_id, Customer.all.map { |c| [c.first_name + " " + c.last_name, c.id] }, { }, { class: 'shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', data: { action: "change->customer#updateInfo", customer_target: "select" } }
 
+        .mt-3{ data: { target: "customer.info" } }
+          - if @estimate.customer.present?
+            %h6.font-bold.uppercase
+              = @estimate.customer.full_name
+            %h6
+              = @estimate.customer.address
+              ,
+              = @estimate.customer.city
+              ,
+              = @estimate.customer.state
+              = @estimate.customer.zip
+            %h6
+              = @estimate.customer.email
+              %br/
+              = number_to_phone(@estimate.customer.phone)
 
-      .mt-3{ data: { target: "customer.info" } }
-        - if @estimate.customer.present?
-          %h6.font-bold.uppercase
-            = @estimate.customer.full_name
-          %h6
-            = @estimate.customer.address
-            ,
-            = @estimate.customer.city
-            ,
-            = @estimate.customer.state
-            = @estimate.customer.zip
-          %h6
-            = @estimate.customer.email
-            %br/
-            = number_to_phone(@estimate.customer.phone)
 
 
     .col-span-2.text-right

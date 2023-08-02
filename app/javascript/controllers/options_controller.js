@@ -1,12 +1,14 @@
 import { Controller } from "stimulus"
-import $ from "jquery";
-
 
 export default class extends Controller {
-  static targets = [ "customerSelect", "boatModelSelect" ]
+  static targets = [ "select", "info" ]
 
-  connect() {
-    $(this.customerSelectTarget).select2()
-    $(this.boatModelSelectTarget).select2()
+  updateInfo() {
+    const selectedCustomerId = this.selectTarget.value
+    fetch(`/customers/${selectedCustomerId}`)
+      .then(response => response.json())
+      .then(data => {
+        this.infoTarget.innerHTML = data
+      })
   }
 }
