@@ -1,0 +1,38 @@
+Arguments: 
+  /usr/local/Cellar/node/20.3.1/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js install
+
+PATH: 
+  /Users/andrewfoster/.rvm/gems/ruby-3.0.0/bin:/Users/andrewfoster/.rvm/gems/ruby-3.0.0@global/bin:/Users/andrewfoster/.rvm/rubies/ruby-3.0.0/bin:/Users/andrewfoster/.rvm/bin:/Users/andrewfoster/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/andrewfoster/.rvm/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.3.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/andrewfoster/Desktop/github/waypoint_estimator/package.json: Expected ',' or '}' after property value in JSON at position 71
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "devDependencies": {
+      "@tailwindcss/typography": "^0.5.9"
+    }
+    "dependencies": {
+      "select2": "^4.0.13"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

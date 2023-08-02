@@ -24,9 +24,10 @@
   .grid.grid-cols-6.gap-4
     .col-span-4
       %h6 BILL TO
-      = form.select :customer_id, Customer.all.map { |c| ["#{c.first_name} #{c.last_name}", c.id] }, class: 'shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+      = form.select :customer_id, Customer.all.map { |c| [c.first_name + " " + c.last_name, c.id] }, { }, { id: 'customer_select', class: 'shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', data: { action: "change->customer#updateInfo" } }
 
-      .mt-3
+
+      .mt-3{ data: { target: "customer.info" } }
         - if @estimate.customer.present?
           %h6.font-bold.uppercase
             = @estimate.customer.first_name + " " + @estimate.customer.last_name
@@ -41,6 +42,7 @@
             = @estimate.customer.email
             %br/
             = number_to_phone(@estimate.customer.phone)
+
 
     .col-span-2.text-right
       %h6
@@ -65,7 +67,7 @@
   .grid.grid-cols-6.gap-4
     .col-span-6
       %p
-        = form.select :boat_model_id, BoatModel.all.map { |b| [b.name, b.id] }, class: 'shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+        = form.select :boat_model_id, BoatModel.all.map { |b| [b.name, b.id] }, { }, { class: 'shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', data: { action: "change->options#updateOptions", options_target: "boatModelSelect" } }
       %h4 Standard Features:
       - if @boat_model
         - @boat_model.standard_features.each do |option|
