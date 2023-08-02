@@ -272,3 +272,5 @@
 2023-07-29 12:10:15.755 CDT [16973] WARNING:  autovacuum worker started without a worker entry
 2023-07-31 22:13:18.450 CDT [38898] ERROR:  cached plan must not change result type
 2023-07-31 22:13:18.450 CDT [38898] STATEMENT:  SELECT "customers".* FROM "customers" WHERE "customers"."user_id" = $1
+2023-08-02 12:42:49.446 CDT [4368] WARNING:  worker took too long to start; canceled
+2023-08-02 12:42:55.057 CDT [61973] WARNING:  autovacuum worker started without a worker entry

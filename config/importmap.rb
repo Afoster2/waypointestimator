@@ -8,3 +8,5 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "stimulus", to: "stimulus/lib/index.js", preload: true
 pin_all_from "https://unpkg.com/stimulus@3.2.1/dist/", under: "stimulus"
 pin "stimulus", to: "https://unpkg.com/stimulus@3.2.1/dist/stimulus.js"
+pin "select2", to: "https://ga.jspm.io/npm:select2@4.1.0-rc.0/dist/js/select2.js"
+pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.7.0/dist/jquery.js"
