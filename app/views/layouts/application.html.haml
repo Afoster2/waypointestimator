@@ -11,6 +11,6 @@
     = javascript_importmap_tags
   %body.prose.mx-auto.max-w-full
     - flash.each do |name, msg|
-      = content_tag(:div, msg, class: "callout msg-alert alert-#{name}")
+      = content_tag(:div, msg, class: "mb-0 p-4 text-center text-white font-bold uppercase bg-green-500")
     = render 'layouts/header'
     = yield

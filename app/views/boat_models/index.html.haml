@@ -16,6 +16,7 @@
         %tr
           %td.px-4.py-2
             = link_to boat_model do
+              = boat_model.year
               = boat_model.name
               = boat_model.style
           %td.px-4.py-2= boat_model.stock_number
@@ -25,7 +26,7 @@
             = number_to_currency(boat_model.price_hull) 
           %td.px-4.py-2
             = number_to_currency(boat_model.price_trailer_hull)
-          %td.flex.space-x-4.py-2
+          %td.flex.space-x-4.py-2.flex.justify-end
             = link_to 'Edit', edit_boat_model_path(boat_model), class: 'bg-blue-500 text-white px-8 py-2 no-underline'
             = button_to 'Delete', boat_model_path(boat_model), method: :delete, data: { confirm: 'Are you sure?' }, class: 'bg-red-500 text-white px-8 py-2 no-underline'
 

@@ -24,7 +24,7 @@
           %td.px-4.py-2= customer.phone
           
 
-          %td.flex.space-x-4.py-2
+          %td.flex.space-x-4.py-2.flex.justify-end
             = link_to 'Edit', edit_customer_path(customer), class: "bg-blue-500 text-white px-8 py-2 no-underline"
             = link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-red-500 text-white px-8 py-2 no-underline"
 

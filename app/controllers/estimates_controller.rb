@@ -13,7 +13,7 @@ class EstimatesController < ApplicationController
   # GET /estimates/new
   def new
     @estimate = Estimate.new
-    @boat_model = BoatModel.new
+    @boat_model = BoatModel.first
   end
 
   # GET /estimates/1/edit
@@ -64,8 +64,12 @@ class EstimatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def estimate_params
-      params.require(:estimate).permit(:user_id, :boat_model_id, :subtotal, :tax, :vit, :doc_fee, :registration, :total_price, option_ids: [])
+      params.require(:estimate).permit(:customer_id, :boat_model_id, :subtotal, :tax, :vit, :doc_fee, :registration, :total_price,
+        power_option_ids: [], console_option_ids: [], factory_option_ids: [], gauge_upgrade_ids: [], seating_option_ids: [], 
+        aluminum_option_ids: [], lighting_option_ids: [], finishing_option_ids: [], cooler_option_ids: [], wetsound_package_ids: [], 
+        additional_option_ids: [], trailer_upgrade_ids: [])
     end
+
 
 
 

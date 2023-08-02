@@ -1,9 +1,178 @@
-.mx-auto.w-full.flex{:class => "md:w-2/3"}
-  .mx-auto
-    - if notice.present?
-      %p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block= notice
-    = render @estimate
-    = link_to 'Edit this estimate', edit_estimate_path(@estimate), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
-    .inline-block.ml-2
-      = button_to 'Destroy this estimate', estimate_path(@estimate), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium"
-    = link_to 'Back to estimates', estimates_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
+.mx-auto.py-12.w-full{:class => "md:w-2/3"}
+  .grid.grid-cols-6.gap-4
+    .col-span-2
+      = image_tag 'waypoint.svg', alt:"Waypoint Marine"
+    .col-start-5.col-span-2.text-right
+      %h1.text-gray-500.mb-0 ESTIMATE
+      %p.mb-0
+        %strong WAYPOINT MARINE
+        %br
+        3033 S. Padre Island Dr.
+        %br
+        Corpus Christi, TX 78415
+        %br
+        361-651-2628
+  %hr
+
+  .grid.grid-cols-6.gap-4
+    .col-span-4
+      %h6 BILL TO
+      %h6.font-bold.uppercase
+        = @estimate.customer.first_name + " " + @estimate.customer.last_name
+      %h6
+        = @estimate.customer.address
+        ,
+        = @estimate.customer.city
+        ,
+        = @estimate.customer.state
+        = @estimate.customer.zip
+      %h6
+        = @estimate.customer.email
+        %br/
+        = number_to_phone(@estimate.customer.phone)
+
+    .col-span-2.text-right
+      %h6
+        Estimate Number:
+        = @estimate.id
+        %br/
+        Salesperson:
+        = @estimate.user.email
+        %br/
+        P.O. Number:
+        **INPUT**
+        %br/
+        Estimate Date:
+        **INPUT**
+        //= form.date_field :date_contacted, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
+      .bg-gray-100.p-5
+        %h6.font-bold.uppercase
+          Grand Total :
+
+  %hr          
+
+  .grid.grid-cols-6.gap-4
+    .col-span-6
+      %p
+        = @estimate.boat_model.name
+      %h4 Standard Features:
+      - @estimate.boat_model.standard_features.each do |option|
+        •
+        = option.name
+
+  %hr
+
+  .grid.grid-cols-6.gap-4
+    .col-span-3.mr-4
+      %h4 Power Options:
+      - @estimate.boat_model.power_options.each do |option|
+        .mb-3
+          = option.model_number
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.ml-4
+      %h4 Console Options:
+      - @estimate.boat_model.console_options.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.mr-4
+      %h4 Factory Options:
+      - @estimate.boat_model.factory_options.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.ml-4
+      %h4 Gauge Upgrades:
+      - @estimate.boat_model.gauge_upgrades.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.mr-4
+      %h4 Seating Options:
+      - @estimate.boat_model.seating_options.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.ml-4
+      %h4 Aluminum Options:
+      - @estimate.boat_model.aluminum_options.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.mr-4
+      %h4 Lighting Options:
+      - @estimate.boat_model.lighting_options.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.ml-4
+      %h4 Finishing Options:
+      - @estimate.boat_model.finishing_options.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.mr-4
+      %h4 Cooler Options:
+      - @estimate.boat_model.cooler_options.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.ml-4
+      %h4 Wetsound Packages:
+      - @estimate.boat_model.wetsound_packages.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.mr-4
+      %h4 Additional Options:
+      - @estimate.boat_model.additional_options.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+    .col-span-3.ml-4
+      %h4 Trailer Upgrades:
+      - @estimate.boat_model.trailer_upgrades.each do |option|
+        .mb-3
+          = option.name
+          .float-right
+            $
+            = option.price
+
+  %hr
+
+  = link_to 'Edit', edit_estimate_path(@estimate), class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+  = link_to 'Back', estimates_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'

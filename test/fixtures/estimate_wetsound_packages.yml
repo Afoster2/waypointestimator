@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  estimate: one
+  wetsound_package: one
+
+two:
+  estimate: two
+  wetsound_package: two

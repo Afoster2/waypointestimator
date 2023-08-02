@@ -1,10 +1,10 @@
 = form_with(model: boat_model, local: true) do |form|
   - if boat_model.errors.any?
     #error_explanation
-      %h2= "#{pluralize(boat_model.errors.count, "error")} prohibited this boat_model from being saved:"
+      %h2.text-red-500= "#{pluralize(boat_model.errors.count, "error")} prohibited this boat_model from being saved:"
       %ul
         - boat_model.errors.full_messages.each do |message|
-          %li= message
+          %li.text-red-500= message
   %form
     .grid.grid-cols-6.gap-4
       .col-span-1
