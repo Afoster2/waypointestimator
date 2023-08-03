@@ -12,7 +12,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @customer }
+      format.json { render json: @customer.as_json(only: [:id, :first_name, :last_name, :address, :city, :state, :zip, :email, :phone]) }
     end
   end
 

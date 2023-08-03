@@ -1,14 +1,16 @@
-import { Controller } from "stimulus"
+import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = [ "select", "info" ]
+  static targets = ["options"];
+  static values = { url: String };
 
-  updateInfo() {
-    const selectedCustomerId = this.selectTarget.value
-    fetch(`/customers/${selectedCustomerId}`)
-      .then(response => response.json())
-      .then(data => {
-        this.infoTarget.innerHTML = data
-      })
+  async loadBoatModelOptions() {
+    const boatModelId = this.element.value;
+    const response = await fetch(`${this.urlValue}/${boatModelId}`);
+    const data = await response.json();
+
+    // Assuming 'options' is an array of option objects with 'id' and 'name' properties.
+    const optionsHTML = data.options.map(option => `<option value="${option.id}">${option.name}</option>`).join("");
+    this.optionsTarget.innerHTML = optionsHTML;
   }
 }

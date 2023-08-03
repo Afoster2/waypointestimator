@@ -17,4 +17,9 @@ Rails.application.routes.draw do
 
   root "pages#home"
 
+  # Remove this line since it's already defined by `resources :customers`
+  # get '/customers/:id', to: 'customers#show', as: 'customer'
+
+  # For boat model options
+  get '/boat_models/:id/options', to: 'boat_models#options', as: 'boat_model_options'
 end

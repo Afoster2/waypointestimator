@@ -24,24 +24,30 @@
   .grid.grid-cols-6.gap-4
     .col-span-4
       %h6 BILL TO
-      = form_with(model: estimate, local: true, data: { controller: "customer" }) do |form|
-        = form.select :customer_id, Customer.all.map { |c| [c.first_name + " " + c.last_name, c.id] }, { }, { class: 'shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', data: { action: "change->customer#updateInfo", customer_target: "select" } }
+      = form.select :customer_id, options_for_select([["Select a customer", ""]].concat(Customer.all.map { |c| [c.full_name, c.id] })),
+              {},
+              data: { controller: "customer-select", action: "change->customer-select#loadCustomerInfo", url: customer_path(":id") },
+              id: "customer-select"
 
-        .mt-3{ data: { target: "customer.info" } }
-          - if @estimate.customer.present?
-            %h6.font-bold.uppercase
-              = @estimate.customer.full_name
-            %h6
-              = @estimate.customer.address
-              ,
-              = @estimate.customer.city
-              ,
-              = @estimate.customer.state
-              = @estimate.customer.zip
-            %h6
-              = @estimate.customer.email
-              %br/
-              = number_to_phone(@estimate.customer.phone)
+
+      #info{"data-target" => "customer-select.info"}
+        - if @estimate.customer.present?
+          %h6.font-bold.uppercase
+            = @estimate.customer.full_name
+          %h6
+            = @estimate.customer.address
+            ,
+            = @estimate.customer.city
+            ,
+            = @estimate.customer.state
+            = @estimate.customer.zip
+          %h6
+            = @estimate.customer.email
+            %br/
+            = number_to_phone(@estimate.customer.phone)
+
+
+
 
 
 
@@ -56,7 +62,6 @@
         **INPUT**
         %br/
         Estimate Date:
-        **INPUT**
         //= form.date_field :date_contacted, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
 
       .bg-gray-100.p-5
@@ -68,7 +73,7 @@
   .grid.grid-cols-6.gap-4
     .col-span-6
       %p
-        = form.select :boat_model_id, BoatModel.all.map { |b| [b.name, b.id] }, { }, { class: 'shadow appearance-none border rounded w-full py-2 px-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', data: { action: "change->options#updateOptions", options_target: "boatModelSelect" } }
+        = form.select :boat_model_id, BoatModel.all.map { |m| [m.name, m.id] }, {}, data: { controller: "options", action: "change->options#loadBoatModelOptions", url: boat_model_options_path(":id") }
 
       %h4 Standard Features:
       - if @boat_model
