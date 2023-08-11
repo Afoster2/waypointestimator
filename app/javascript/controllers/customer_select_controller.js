@@ -1,28 +1,44 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["info"];
+  static targets = ["first_name", "last_name", "address", "city", "state", "zip", "email", "phone", "customerSelect"];
   static values = { url: String };
 
   async loadCustomerInfo() {
-    const customerId = this.element.value;
+    const customerId = this.customerSelectTarget.value;
+    console.log("Selected Customer ID:", customerId);
+
+    const urlTemplate = this.customerSelectTarget.dataset.url; // Using dataset.url to access the data-url attribute
+    console.log("URL Template:", urlTemplate);
+
+    if (!urlTemplate) {
+        console.error("URL template is not defined!");
+        return;
+    }
+
+    const url = urlTemplate.replace(":id", customerId) + ".json";
+    console.log("Constructed URL:", url);
+
+
     try {
-      const response = await fetch(`/customers/${customerId}.json`);
+      const response = await fetch(url);
       if (!response.ok) {
         throw new Error('Failed to fetch customer information.');
       }
       const data = await response.json();
 
-      const customerInfoHTML = `
-        <h6 class="font-bold uppercase">${data.full_name}</h6>
-        <h6>${data.address}, ${data.city}, ${data.state} ${data.zip}</h6>
-        = mail_to ${data.email}
-        = number_to_phone(${data.phone})
-      `;
-      this.infoTarget.innerHTML = customerInfoHTML;
+      this.first_nameTarget.textContent = data.first_name;
+      this.last_nameTarget.textContent = data.last_name;
+      this.addressTarget.textContent = data.address;
+      this.cityTarget.textContent = data.city;
+      this.stateTarget.textContent = data.state;
+      this.zipTarget.textContent = data.zip;
+      this.emailTarget.textContent = data.email;
+      this.phoneTarget.textContent = data.phone;
     } catch (error) {
       console.error(error);
-      this.infoTarget.innerHTML = '<p>Error fetching customer information.</p>';
+      this.full_nameTarget.textContent = 'Error fetching customer information.';
     }
   }
+
 }

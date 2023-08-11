@@ -26,9 +26,6 @@ class EstimatesController < ApplicationController
   def create
     @estimate = Estimate.new(estimate_params)
 
-    # If 'selected_options' is an array of option IDs sent from the form.
-    @estimate.selected_options = Option.where(id: params[:estimate][:selected_options])
-
     if @estimate.save
       redirect_to @estimate, notice: "Estimate was successfully created."
     else

@@ -5,9 +5,8 @@ export default class extends Controller {
   static values = { url: String };
 
   async loadBoatModelOptions() {
-    const boatModelId = this.element.value;
-    const response = await fetch(`${this.urlValue}/${boatModelId}`);
-    const data = await response.json();
+    const boatModelId = this.boatModelIdValue;
+    const url = `/boat_models/${boatModelId}.json`;
 
     // Assuming 'options' is an array of option objects with 'id' and 'name' properties.
     const optionsHTML = data.options.map(option => `<option value="${option.id}">${option.name}</option>`).join("");
