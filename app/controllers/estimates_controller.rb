@@ -1,5 +1,6 @@
 class EstimatesController < ApplicationController
   before_action :set_estimate, only: %i[ show edit update destroy ]
+  before_action :set_user, only: [:create, :update]
 
   # GET /estimates or /estimates.json
   def index
@@ -25,6 +26,7 @@ class EstimatesController < ApplicationController
   # POST /estimates or /estimates.json
   def create
     @estimate = Estimate.new(estimate_params)
+    @estimate.user = @user
 
     if @estimate.save
       redirect_to @estimate, notice: "Estimate was successfully created."
@@ -36,12 +38,19 @@ class EstimatesController < ApplicationController
   # PATCH/PUT /estimates/1 or /estimates/1.json
   def update
     respond_to do |format|
+      @estimate = Estimate.find(params[:id])
+      if estimate_params[:customer_id].blank? && @estimate.customer_id.present?
+        params[:estimate][:customer_id] = @estimate.customer_id
+      end
       if @estimate.update(estimate_params)
         format.html { redirect_to estimate_url(@estimate), notice: "Estimate was successfully updated." }
         format.json { render :show, status: :ok, location: @estimate }
       else
+        puts @estimate.errors.full_messages
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @estimate.errors, status: :unprocessable_entity }
+        # puts "======= DEBUGGING ======="
+        # puts estimate_params.inspect
       end
     end
   end
@@ -60,6 +69,10 @@ class EstimatesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_estimate
       @estimate = Estimate.find(params[:id])
+    end
+
+    def set_user
+      @user = current_user
     end
 
     # Only allow a list of trusted parameters through.

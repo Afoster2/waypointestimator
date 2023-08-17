@@ -16,7 +16,8 @@
         %tr
           %td.px-4.py-2
             = estimate.id
-          %td.px-4.py-2 date
+          %td.px-4.py-2 
+            = estimate.created_at.strftime("%m/%d/%Y")
           %td.px-4.py-2= estimate.customer.first_name + " " + estimate.customer.last_name
           %td.px-4.py-2
             = estimate.boat_model.year

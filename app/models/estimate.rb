@@ -43,5 +43,6 @@ class Estimate < ApplicationRecord
   has_many :trailer_upgrades, through: :estimate_trailer_upgrades
 
   validates :user_id, :boat_model_id, presence: true
+  validates :customer, presence: true
 
 end
