@@ -1,11 +1,14 @@
 .grid.grid-cols-6.gap-4
   .col-span-1
+    = f.label :year
+    = f.text_field :year, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+  .col-span-1
     = f.label :brand
-    = f.text_field :brand, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+    = f.text_field :engine_make, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
   .col-span-1
     = f.label :model_number
     = f.text_field :model_number, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-  .col-span-2
+  .col-span-1
     = f.label :description
     = f.text_field:description, class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
   .col-span-1

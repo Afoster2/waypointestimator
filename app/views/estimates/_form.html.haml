@@ -78,23 +78,18 @@
 
   .grid.grid-cols-6.gap-4
     .col-span-6
-      %div{"data-controller" => "options"}
-        %p
-          = form.select :boat_model_id, BoatModel.all.map { |m| [m.name, m.id] }, {}, data: { controller: "options", action: "change->options#loadBoatModelOptions", options_target: "boatModelId" }
+      %div{ data: { controller: "options" } }
+        = form.select :boat_model_id, BoatModel.all.map { |m| [m.name, m.id] }, { prompt: 'Select a boat' }, data: { action: "change->options#loadBoatModelOptions", options_target: "boatModelId" }
 
-        
         %h4 Standard Features:
         %span{ "data-options-target": "standard_features" }
           = @estimate.boat_model&.name
-          = @estimate.boat_model&.description
-          = @estimate.boat_model&.price
         %hr
         %h4 Power Options:
         %span{ "data-options-target": "power_options" }
           = @estimate.boat_model&.year
-          = @estimate.boat_model&.model_number
           = @estimate.boat_model&.engine_make
-          = @estimate.boat_model&.engine_model
+          = @estimate.boat_model&.model_number
           = @estimate.boat_model&.price
         %hr
         %h4 Console Options:
@@ -162,142 +157,6 @@
           = @estimate.boat_model&.name
           = @estimate.boat_model&.description
           = @estimate.boat_model&.price
-
-
-
-  .grid.grid-cols-6.gap-4
-    .col-span-3.mr-4
-      %h4 Power Options:
-      - if @boat_model
-        - @boat_model.power_options.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[power_option_ids][]', option.id, @estimate.power_option_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.model_number
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.ml-4
-      %h4 Console Options:
-      - if @boat_model
-        - @boat_model.console_options.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[console_option_ids][]', option.id, @estimate.console_option_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.mr-4
-      %h4 Factory Options:
-      - if @boat_model
-        - @boat_model.factory_options.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[factory_option_ids][]', option.id, @estimate.factory_option_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.ml-4
-      %h4 Gauge Upgrades:
-      - if @boat_model
-        - @boat_model.gauge_upgrades.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[gauge_upgrade_ids][]', option.id, @estimate.gauge_upgrade_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.mr-4
-      %h4 Seating Options:
-      - if @boat_model
-        - @boat_model.seating_options.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[seating_option_ids][]', option.id, @estimate.seating_option_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.ml-4
-      %h4 Aluminum Options:
-      - if @boat_model
-        - @boat_model.aluminum_options.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[aluminum_option_ids][]', option.id, @estimate.aluminum_option_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.mr-4
-      %h4 Lighting Options:
-      - if @boat_model
-        - @boat_model.lighting_options.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[lighting_option_ids][]', option.id, @estimate.lighting_option_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.ml-4
-      %h4 Finishing Options:
-      - if @boat_model
-        - @boat_model.finishing_options.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[finishing_option_ids][]', option.id, @estimate.finishing_option_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.mr-4
-      %h4 Cooler Options:
-      - if @boat_model
-        - @boat_model.cooler_options.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[cooler_option_ids][]', option.id, @estimate.cooler_option_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.ml-4
-      %h4 Wetsound Packages:
-      - if @boat_model
-        - @boat_model.wetsound_packages.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[wetsound_package_ids][]', option.id, @estimate.wetsound_package_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.mr-4
-      %h4 Additional Options:
-      - if @boat_model
-        - @boat_model.additional_options.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[additional_option_ids][]', option.id, @estimate.additional_option_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
-    .col-span-3.ml-4
-      %h4 Trailer Upgrades:
-      - if @boat_model
-        - @boat_model.trailer_upgrades.each do |option|
-          .mb-3
-            = check_box_tag 'estimate[trailer_upgrade_ids][]', option.id, @estimate.trailer_upgrade_ids.include?(option.id), id: dom_id(option)
-            = label_tag dom_id(option), option.name
-            .float-right
-              $
-              = label_tag dom_id(option), option.price
-
 
 
   .actions

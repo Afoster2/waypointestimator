@@ -23,4 +23,5 @@ Rails.application.routes.draw do
 
   # For boat model options
   get '/boat_models/:id/options', to: 'boat_models#options', as: 'boat_model_options'
+
 end
