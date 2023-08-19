@@ -78,16 +78,92 @@
 
   .grid.grid-cols-6.gap-4
     .col-span-6
-      %p
-        = form.select :boat_model_id, BoatModel.all.map { |m| [m.name, m.id] }, {}, data: { controller: "options", action: "change->options#loadBoatModelOptions", url: boat_model_options_path(":id") }
+      %div{"data-controller" => "options"}
+        %p
+          = form.select :boat_model_id, BoatModel.all.map { |m| [m.name, m.id] }, {}, data: { controller: "options", action: "change->options#loadBoatModelOptions", options_target: "boatModelId" }
 
-      %h4 Standard Features:
-      - if @boat_model
-        - @boat_model.standard_features.each do |option|
-          •
-          = label_tag dom_id(option), option.name
-          
-  %hr
+        
+        %h4 Standard Features:
+        %span{ "data-options-target": "standard_features" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Power Options:
+        %span{ "data-options-target": "power_options" }
+          = @estimate.boat_model&.year
+          = @estimate.boat_model&.model_number
+          = @estimate.boat_model&.engine_make
+          = @estimate.boat_model&.engine_model
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Console Options:
+        %span{ "data-options-target": "console_options" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Factory Options:
+        %span{ "data-options-target": "factory_options" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Gauge Upgrades:
+        %span{ "data-options-target": "gauge_upgrades" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Seating Options:
+        %span{ "data-options-target": "seating_options" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Aluminum Options:
+        %span{ "data-options-target": "aluminum_options" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Lighting Options:
+        %span{ "data-options-target": "lighting_options" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Finishing Options:
+        %span{ "data-options-target": "finishing_options" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr          
+        %h4 Cooler Options:
+        %span{ "data-options-target": "cooler_options" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Wetsound Packages:
+        %span{ "data-options-target": "wetsound_packages" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Additional Options:
+        %span{ "data-options-target": "additional_options" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+        %hr
+        %h4 Trailer Upgrades:
+        %span{ "data-options-target": "trailer_upgrades" }
+          = @estimate.boat_model&.name
+          = @estimate.boat_model&.description
+          = @estimate.boat_model&.price
+
+
 
   .grid.grid-cols-6.gap-4
     .col-span-3.mr-4
