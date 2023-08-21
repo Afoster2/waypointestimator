@@ -14,19 +14,22 @@
     %tbody
       - @estimates.each do |estimate|
         %tr
-          %td.px-4.py-2
+          %td.px-4.py-2.text-sm
             = estimate.id
-          %td.px-4.py-2 
+          %td.px-4.py-2.text-sm
             = estimate.created_at.strftime("%m/%d/%Y")
-          %td.px-4.py-2= estimate.customer.first_name + " " + estimate.customer.last_name
-          %td.px-4.py-2
+          %td.px-4.py-2.text-sm
+            = estimate.customer.first_name + " " + estimate.customer.last_name
+          %td.px-4.py-2.text-sm
             = estimate.boat_model.year
             = estimate.boat_model.name
             = estimate.boat_model.style            
-          %td.px-4.py-2 Model num
-          %td.px-4.py-2 Total Price
-          //= number_to_currency(boat_model.price_trailer_hull)
-          %td.flex.space-x-4.py-2.flex.justify-end
+          %td.px-4.py-2.text-sm
+            - estimate.power_options.each do |option|
+              = "#{option.year} #{option.engine_make} #{option.model_number}"
+          %td.px-4.py-2.text-sm
+            = number_to_currency(estimate.total_price)
+          %td.flex.space-x-4.py-2.flex.justify-end.text-sm
             = link_to 'View', estimate, class: 'bg-green-500 text-white px-8 py-2 no-underline'
             = link_to 'Edit', edit_estimate_path(estimate), class: 'bg-blue-500 text-white px-8 py-2 no-underline'
             = button_to 'Delete', estimate_path(estimate), method: :delete, data: { confirm: 'Are you sure?' }, class: 'bg-red-500 text-white px-8 py-2 no-underline'

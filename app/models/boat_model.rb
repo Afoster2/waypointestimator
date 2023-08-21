@@ -5,6 +5,10 @@ class BoatModel < ApplicationRecord
 
 	validates :length, :beam, :max_hp, :hull_weight, :max_passengers, :price_hull, :price_trailer_hull, :name, :stock_number, :style, :year, presence: true
 
+  def boat_full_name
+    "#{year} #{name} #{style}"
+  end
+
   has_many :standard_features, dependent: :destroy
   has_many :power_options, dependent: :destroy
   has_many :console_options, dependent: :destroy

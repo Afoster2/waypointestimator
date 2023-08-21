@@ -37,32 +37,50 @@ export default class extends Controller {
 
       // Modified generateCheckboxes function
       const generateCheckboxes = (optionsArray, optionType, targetElement) => {
-        optionsArray.forEach(option => {
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.name = `${optionType}[]`;
-            checkbox.value = option.id;
-            checkbox.id = `${optionType}_${option.id}`;
-            
-            const label = document.createElement('label');
-            label.htmlFor = checkbox.id;
-            label.textContent = option.name;
+          const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+          });
 
-            if (optionType === 'power_options') {
-                label.textContent = `${option.year} ${option.engine_make} ${option.model_number}`;
-            } else {
-                label.textContent = option.name;
-            }
-            
-            const description = document.createElement('span');
-            description.textContent = option.description;
+          optionsArray.forEach(option => {
+              const container = document.createElement('div');
+              container.style.display = 'flex';
+              container.style.justifyContent = 'space-between';
+              container.style.alignItems = 'center';
+              container.style.marginBottom = '10px'; // Add some space between each option
 
-            const price = document.createElement('span');
-            price.textContent = `Price: $${option.price}`;
+              const checkbox = document.createElement('input');
+              checkbox.type = 'checkbox';
+              checkbox.name = `estimate[${optionType}_ids][]`;
+              checkbox.value = option.id;
+              checkbox.id = `${optionType}_${option.id}`;
+              checkbox.style.marginRight = '10px'; // Add some space between checkbox and label
 
-            targetElement.append(checkbox, label, description, price, document.createElement('br'));
-        });
+              const label = document.createElement('label');
+              label.htmlFor = checkbox.id;
+              label.style.fontWeight = 'bold';
+
+              if (optionType === 'power_options') {
+                  label.textContent = `${option.year} ${option.engine_make} ${option.model_number}`;
+                  label.style.marginRight = '10px';
+              } else {
+                  label.textContent = option.name;
+                  label.style.marginRight = '10px';
+              }
+
+              const description = document.createElement('span');
+              description.textContent = option.description;
+
+              const price = document.createElement('span');
+              price.style.flexGrow = '1';
+              price.style.textAlign = 'right';
+              price.textContent = `.......... ${formatter.format(option.price)}`;
+
+              container.append(checkbox, label, description, price);
+              targetElement.append(container);
+          });
       };
+
 
       // Load each type of option
       if (data.standard_features) {

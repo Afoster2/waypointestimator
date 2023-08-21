@@ -43,18 +43,21 @@
         **INPUT**
         %br/
         Estimate Date:
-        = @estimate.created_at.strftime("%m/%d/%y")
+        %span.font-bold
+          = @estimate.created_at.strftime("%m/%d/%y")
 
       .bg-gray-100.p-5
         %h6.font-bold.uppercase
-          Grand Total :
+          %span.float-left
+            Grand Total :
+          = number_to_currency(@estimate.total_price)
 
   %hr          
 
   .grid.grid-cols-6.gap-4
     .col-span-6
-      %p
-        = @estimate.boat_model.name
+      %h2.mt-1
+        = @estimate.boat_model.boat_full_name
       %h4 Standard Features:
       - @estimate.boat_model.standard_features.each do |option|
         •
@@ -65,113 +68,266 @@
   .grid.grid-cols-6.gap-4
     .col-span-3.mr-4
       %h4 Power Options:
-      - @estimate.boat_model.power_options.each do |option|
-        .mb-3
-          = option.model_number
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.power_options.each do |option|
+          .mb-3
+            = "#{option.year} #{option.engine_make} #{option.model_number}"
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :
+        %span.float-right
+          = number_to_currency(@estimate.power_options_total)
+
 
     .col-span-3.ml-4
       %h4 Console Options:
-      - @estimate.boat_model.console_options.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.console_options.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.console_options_total)           
 
     .col-span-3.mr-4
       %h4 Factory Options:
-      - @estimate.boat_model.factory_options.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.factory_options.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.factory_options_total) 
 
     .col-span-3.ml-4
       %h4 Gauge Upgrades:
-      - @estimate.boat_model.gauge_upgrades.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.gauge_upgrades.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.gauge_upgrades_total)
 
     .col-span-3.mr-4
       %h4 Seating Options:
-      - @estimate.boat_model.seating_options.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.seating_options.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.seating_options_total)
 
     .col-span-3.ml-4
       %h4 Aluminum Options:
-      - @estimate.boat_model.aluminum_options.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.aluminum_options.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.aluminum_options_total)
 
     .col-span-3.mr-4
       %h4 Lighting Options:
-      - @estimate.boat_model.lighting_options.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.lighting_options.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.lighting_options_total)
 
     .col-span-3.ml-4
       %h4 Finishing Options:
-      - @estimate.boat_model.finishing_options.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.finishing_options.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.finishing_options_total)
 
     .col-span-3.mr-4
       %h4 Cooler Options:
-      - @estimate.boat_model.cooler_options.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.cooler_options.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.cooler_options_total)
 
     .col-span-3.ml-4
       %h4 Wetsound Packages:
-      - @estimate.boat_model.wetsound_packages.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.wetsound_packages.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.wetsound_packages_total)
 
     .col-span-3.mr-4
       %h4 Additional Options:
-      - @estimate.boat_model.additional_options.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.additional_options.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.additional_options_total)
 
     .col-span-3.ml-4
       %h4 Trailer Upgrades:
-      - @estimate.boat_model.trailer_upgrades.each do |option|
-        .mb-3
-          = option.name
-          .float-right
-            $
-            = option.price
+      .p-2.bg-gray-100
+        - @estimate.trailer_upgrades.each do |option|
+          .mb-3
+            = option.name
+            .float-right
+              = number_to_currency(option.price)
+      .p-2.bg-gray-200.font-bold
+        SUBTOTAL :   
+        %span.float-right
+          = number_to_currency(@estimate.trailer_upgrades_total)
 
   %hr
+
+      
+  .grid.grid-cols-6
+    .col-span-3
+      %h3.mt-1 Boat colors
+    .col-span-3
+      %h3.mt-1 Financing
+      .table-auto
+        .tbody
+          .tr
+            .td.border.border-slate-300.p-2
+              Subtotal :
+              %span.float-right
+                = number_to_currency(@estimate.subtotal_pre_tax)
+          .tr
+            .td.border.border-slate-300.p-2
+              Tax (.625%) :
+              %span.float-right
+                = number_to_currency(@estimate.tax)
+          .tr
+            .td.border.border-slate-300.p-2
+              Doc Fee :
+              %span.float-right
+                $125.00
+          .tr
+            .td.border.border-slate-300.p-2
+              Registration :
+              %span.float-right
+                $250
+          .tr
+            .td.border.border-slate-300.p-2
+              VIT (.002104%):
+              %span.float-right
+                = number_to_currency(@estimate.vit)
+          .tr
+            .td.border.border-slate-300.p-2
+              Grand Total :
+              %span.float-right
+                = number_to_currency(@estimate.total_price)
+
+
+  .grid.grid-cols-6.gap-4
+    .col-span-4
+      %h3 Down Payments
+  .grid.grid-cols-6.gap-4
+    .col-span-2
+      .table-auto
+        .tbody
+          .tr
+            .td.border.border-slate-300.p-2
+              10%
+              %span.float-right
+                = number_to_currency(@estimate.ten_total_price)  
+    .col-span-2
+      .table-auto
+        .tbody
+          .tr
+            .td.border.border-slate-300.p-2
+              15%
+              %span.float-right
+                = number_to_currency(@estimate.fifteen_total_price)
+    .col-span-2
+      .table-auto
+        .tbody
+          .tr
+            .td.border.border-slate-300.p-2
+              20%
+              %span.float-right
+                = number_to_currency(@estimate.twenty_total_price)
+
+    .col-span-6
+      %p.text-xs A documentary fee is not an offical fee. A documentary fee is not required by law, but may be charged to buyers for handling documents and performaning services relating to the closing of a sale. Buyers may avoid payment of the fee to the seller by handling the documents and performing the services relating to the closing of the sale. A documentary fee may not exceed $125. This notice is required by law.
+
+      %p.text-xs This order shall not become binding until accepted by dealer of his authorized representative and in the event of a time sale, dealer shall not be obligated to sell until approved of the terms hereof is given by a bank or finance company willing to purchase a retail installment contract between the parites hereto based on such terms. Purchaser by his execution of this Order certifies that he is of legal age or older and acknowledges that he has read its terms and conditions and has recieved a true copy of this Order. No verbal agreemetns will be recognized. I/we authorize you and/or any proposed assigner to verify my/our credit standing as deemed necessary.
+    .col-span-3.pt-2
+      %hr.mb-2
+      %p.text-xs 
+        SIGNATURE
+        %span.float-right
+          DATE
+    .col-span-6
+      %p.text-xs
+        I understand that the above services and equipment is due as a fulfillment of the conditions of sale and further acknowledge that no other servcies or equipment has been agreed upon by Waypoint Marine or any of its representatives either verbally or in writing. Deposits on ordered/modified boats, motors and trailers are non-refundable.
+
+    .col-span-3.pt-5
+      %span.text-m.font-bold 
+        Jared Pool
+        %span.float-right
+          = @estimate.created_at.strftime("%m/%d/%y")
+      %hr.mt-2.mb-2
+      %p.text-xs 
+        SIGNATURE
+        %span.float-right
+          DATE
+
+    .col-span-3.pt-5
+      %hr.mt-9.mb-2
+      %p.text-xs 
+        SIGNATURE
+        %span.float-right
+          DATE
+
+  %br
+  %br
 
   = link_to 'Edit', edit_estimate_path(@estimate), class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'
   = link_to 'Back', estimates_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'
