@@ -236,46 +236,45 @@
           .tr
             .td.border.border-slate-300.p-2
               Subtotal :
-              %span.float-right
+              %span.float-right.font-bold
                 = number_to_currency(@estimate.subtotal_pre_tax)
           .tr
             .td.border.border-slate-300.p-2
               Tax (.625%) :
-              %span.float-right
+              %span.float-right.font-bold
                 = number_to_currency(@estimate.tax)
           .tr
             .td.border.border-slate-300.p-2
               Doc Fee :
-              %span.float-right
+              %span.float-right.font-bold
                 $125.00
           .tr
             .td.border.border-slate-300.p-2
               Registration :
-              %span.float-right
+              %span.float-right.font-bold
                 $250
           .tr
             .td.border.border-slate-300.p-2
               VIT (.002104%):
-              %span.float-right
+              %span.float-right.font-bold
                 = number_to_currency(@estimate.vit)
           .tr
             .td.border.border-slate-300.p-2
               Grand Total :
-              %span.float-right
+              %span.float-right.font-bold.text-red-500
                 = number_to_currency(@estimate.total_price)
 
 
-  .grid.grid-cols-6.gap-4
-    .col-span-4
-      %h3 Down Payments
-  .grid.grid-cols-6.gap-4
+  .grid.grid-cols-12.gap-4.mt-5
+    .col-span-6
+      %h2.mt-2 Down Payments
     .col-span-2
       .table-auto
         .tbody
           .tr
             .td.border.border-slate-300.p-2
               10%
-              %span.float-right
+              %span.float-right.font-bold
                 = number_to_currency(@estimate.ten_total_price)  
     .col-span-2
       .table-auto
@@ -283,7 +282,7 @@
           .tr
             .td.border.border-slate-300.p-2
               15%
-              %span.float-right
+              %span.float-right.font-bold
                 = number_to_currency(@estimate.fifteen_total_price)
     .col-span-2
       .table-auto
@@ -291,9 +290,10 @@
           .tr
             .td.border.border-slate-300.p-2
               20%
-              %span.float-right
+              %span.float-right.font-bold
                 = number_to_currency(@estimate.twenty_total_price)
 
+  .grid.grid-cols-6.gap-4
     .col-span-6
       %p.text-xs A documentary fee is not an offical fee. A documentary fee is not required by law, but may be charged to buyers for handling documents and performaning services relating to the closing of a sale. Buyers may avoid payment of the fee to the seller by handling the documents and performing the services relating to the closing of the sale. A documentary fee may not exceed $125. This notice is required by law.
 
