@@ -85,6 +85,7 @@
         .grid.grid-cols-1
           - @boat_model.power_options.each do |option|
             .text-sm
+              = option.year
               = option.brand
               = option.model_number
               %span.float-right

@@ -1,0 +1,15 @@
+%table.table-auto.w-full
+  %thead
+    %tr
+      %th.px-4.py-2 Name
+      %th.px-4.py-2 Location
+      
+  %tbody
+    - @customers.each do |customer|
+      %tr
+        %td.px-4.py-2
+          = link_to customer.full_name, customer
+        %td.px-4.py-2
+          = customer.location
+        %td.px-4.py-2
+          = link_to "View", customer, class: 'bg-green-500 text-white px-8 py-2 no-underline'

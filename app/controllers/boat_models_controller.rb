@@ -44,7 +44,8 @@ class BoatModelsController < ApplicationController
     if @boat_model.save
       redirect_to @boat_model, notice: 'Boat model was successfully created.'
     else
-      render :new
+      flash[:error] = 'There was an error creating the boat model.'
+      redirect_to new_boat_model_path
     end
   end
 
