@@ -1,5 +1,15 @@
 .mx-auto.py-4.w-full{:class => "md:w-10/12"}
   .grid.grid-cols-6.mt-12
+    .col-span-6
+      %h4 
+        - if user_signed_in?
+          / This checks if a user is signed in (provided by Devise)
+          %h1
+            Welcome, #{current_user.full_name}!
+        - else
+          %h1 Welcome to our website!
+      %hr.mb-2
+
     .col-span-4.mr-5
       %h2 Recent Estimates
       = render 'estimates/home_estimates'

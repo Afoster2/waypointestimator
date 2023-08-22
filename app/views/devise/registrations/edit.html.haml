@@ -6,13 +6,22 @@
      
       = button_to "Cancel this account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 float-right'
         
-      %p User Name
+      %p
+        = @user.full_name
       %p
         = @user.email
 
 
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = render "devise/shared/error_messages", resource: resource
+
+      .mb-4
+        = f.label :first_name, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = f.text_field :first_name, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+      .mb-4
+        = f.label :last_name, class: 'block text-gray-700 text-sm font-bold mb-2'
+        = f.text_field :last_name, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+
       .mb-4
         = f.label :email, class: 'block text-gray-700 text-sm font-bold mb-2'
         = f.email_field :email, autofocus: true, autocomplete: "email", class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
