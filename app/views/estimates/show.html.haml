@@ -34,13 +34,19 @@
     .col-span-2.text-right
       %h6
         Estimate Number:
-        = @estimate.id
+        %span.font-bold
+          = @estimate.id
         %br/
         Salesperson:
-        = @estimate.user.email
+        %span.font-bold
+          = @estimate.user.email
         %br/
         P.O. Number:
-        **INPUT**
+        - if @estimate.po_name
+          %span.font-bold
+            = @estimate.po_name
+        - else
+          ____________
         %br/
         Estimate Date:
         %span.font-bold
