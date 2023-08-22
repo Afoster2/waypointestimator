@@ -81,106 +81,171 @@
       %div{ data: { controller: "options" } }
         = form.select :boat_model_id, BoatModel.all.map { |m| [m.boat_full_name, m.id] }, { prompt: 'Select a boat' }, data: { action: "change->options#loadBoatModelOptions", options_target: "boatModelId" }
 
-        %h4 Standard Features:
-        %span{ "data-options-target": "standard_features" }
-          = @estimate.boat_model&.name
-        %hr
-        %h4 Power Options:
-        %span{ "data-options-target": "power_options" }
-          - @estimate.power_options.each do |option|
-            = option&.year
-            = option&.engine_make
-            = option&.model_number
-            = option&.price
-        %hr
+        - if @boat_model
+          %h4 Standard Features:
+          %span{ "data-options-target": "standard_features" }
+            - @boat_model.standard_features.each do |option|
+              %span 
+                = option.name
+                •
+          %hr
+          %h4 Power Options:
+          .mb-2.5
+            %span{ "data-options-target": "power_options" }
+              - @boat_model.power_options.each do |option|
+                = check_box_tag 'estimate[power_options_ids][]', option.id, @estimate.power_option_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.year
+                  = option.engine_make
+                = option.model_number
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
 
-        %h4 Console Options:
-        %span{ "data-options-target": "console_options" }
-          - @estimate.console_options.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
+          %hr
 
-        %h4 Factory Options:
-        %span{ "data-options-target": "factory_options" }
-          - @estimate.factory_options.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
+          %h4 Console Options:
+          .mb-2.5
+            %span{ "data-options-target": "console_options" }
+              - @boat_model.console_options.each do |option|
+                = check_box_tag 'estimate[console_options_ids][]', option.id, @estimate.console_option_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
 
-        %h4 Gauge Upgrades:
-        %span{ "data-options-target": "gauge_upgrades" }
-          - @estimate.gauge_upgrades.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
+          %h4 Factory Options:
+          .mb-2.5
+            %span{ "data-options-target": "factory_options" }
+              - @boat_model.factory_options.each do |option|
+                = check_box_tag 'estimate[factory_options_ids][]', option.id, @estimate.factory_option_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
 
-        %h4 Seating Options:
-        %span{ "data-options-target": "seating_options" }
-          - @estimate.seating_options.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
+          %h4 Gauge Upgrades:
+          .mb-2.5
+            %span{ "data-options-target": "gauge_upgrades" }
+              - @boat_model.gauge_upgrades.each do |option|
+                = check_box_tag 'estimate[gauge_upgrades_ids][]', option.id, @estimate.gauge_upgrade_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
 
-        %h4 Aluminum Options:
-        %span{ "data-options-target": "aluminum_options" }
-          - @estimate.aluminum_options.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
+          %h4 Seating Options:
+          .mb-2.5
+            %span{ "data-options-target": "seating_options" }
+              - @boat_model.seating_options.each do |option|
+                = check_box_tag 'estimate[seating_options_ids][]', option.id, @estimate.seating_option_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
+          %h4 Aluminum Options:
+          .mb-2.5
+            %span{ "data-options-target": "aluminum_options" }
+              - @boat_model.aluminum_options.each do |option|
+                = check_box_tag 'estimate[aluminum_options_ids][]', option.id, @estimate.aluminum_option_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
 
-        %h4 Lighting Options:
-        %span{ "data-options-target": "lighting_options" }
-          - @estimate.lighting_options.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
+          %h4 Lighting Options:
+          .mb-2.5
+            %span{ "data-options-target": "lighting_options" }
+              - @boat_model.lighting_options.each do |option|
+                = check_box_tag 'estimate[lighting_options_ids][]', option.id, @estimate.lighting_option_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
 
-        %h4 Finishing Options:
-        %span{ "data-options-target": "finishing_options" }
-          - @estimate.finishing_options.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
+          %h4 Finishing Options:
+          .mb-2.5
+            %span{ "data-options-target": "finishing_options" }
+              - @boat_model.finishing_options.each do |option|
+                = check_box_tag 'estimate[finishing_options_ids][]', option.id, @estimate.finishing_option_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
 
-        %h4 Cooler Options:
-        %span{ "data-options-target": "cooler_options" }
-          - @estimate.cooler_options.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
+          %h4 Cooler Options:
+          .mb-2.5
+            %span{ "data-options-target": "cooler_options" }
+              - @boat_model.cooler_options.each do |option|
+                = check_box_tag 'estimate[cooler_options_ids][]', option.id, @estimate.cooler_option_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
 
-        %h4 Wetsound Packages:
-        %span{ "data-options-target": "wetsound_packages" }
-          - @estimate.wetsound_packages.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
+          %h4 Wetsound Packages:
+          .mb-2.5
+            %span{ "data-options-target": "wetsound_packages" }
+              - @boat_model.wetsound_packages.each do |option|
+                = check_box_tag 'estimate[wetsound_packages_ids][]', option.id, @estimate.wetsound_package_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
 
-        %h4 Additional Options:
-        %span{ "data-options-target": "additional_options" }
-          - @estimate.additional_options.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
+          %h4 Additional Options:
+          .mb-2.5
+            %span{ "data-options-target": "additional_options" }
+              - @boat_model.additional_options.each do |option|
+                = check_box_tag 'estimate[additional_options_ids][]', option.id, @estimate.additional_option_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
 
-        %h4 Trailer Upgrades:
-        %span{ "data-options-target": "trailer_upgrades" }
-          - @estimate.trailer_upgrades.each do |option|
-            = option.name
-            = option.description
-            = number_to_currency(option.price)
-        %hr
-
+          %h4 Trailer Upgrades:
+          .mb-2.5
+            %span{ "data-options-target": "trailer_upgrades" }
+              - @boat_model.trailer_upgrades.each do |option|
+                = check_box_tag 'estimate[trailer_upgrades_ids][]', option.id, @estimate.trailer_upgrade_ids.include?(option.id), class:"mr-2.5"
+                %span.font-bold.mr-2.5
+                  = option.name
+                = option.description
+                %span.float-right
+                  = number_to_currency(option.price)
+                %br
+          %hr
+        - else
+          %p No boat model selected.
   .actions
     = form.submit class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'
