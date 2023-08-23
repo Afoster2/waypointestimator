@@ -173,7 +173,7 @@
       .col-span-1.md:mr-2
         %h2.mt-0 Cooler Options
         .grid.grid-cols-1
-          - @boat_model.lighting_options.each do |option|
+          - @boat_model.cooler_options.each do |option|
             .text-sm
               = option.name
               %span.float-right

@@ -89,6 +89,28 @@
                 = option.name
                 •
           %hr
+
+        - if @boat_model
+          .mb-2.5
+            = form.check_box :price_hull, { checked: @estimate.price_hull.present? }, @boat_model.price_hull, nil
+            %span.font-bold.ml-2.5
+              Hull Only
+            %span.float-right.font-bold
+              = number_to_currency(@boat_model.price_hull)
+            %p
+              Pricing does not include labor, battery, motor, binnacle, control box, wiring harness, key switch, emergency stop switch, gauges, prop, steering componants or jackplate w/ blinker trim.
+            %br/
+            %br/
+
+            = form.check_box :price_trailer_hull, { checked: @estimate.price_trailer_hull.present? }, @boat_model.price_trailer_hull, nil
+            %span.font-bold.ml-2.5
+              Hull + Trailer
+            %span.float-right.font-bold
+              = number_to_currency(@boat_model.price_trailer_hull)
+            %p
+              Pricing does not include labor, battery, motor, binnacle, control box, wiring harness, key switch, emergency stop switch, gauges, prop, steering componants or jackplate w/ blinker trim.
+          %hr
+
           %h4 Power Options:
           .mb-2.5
             %span{ "data-options-target": "power_options" }

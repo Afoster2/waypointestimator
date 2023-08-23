@@ -7,7 +7,8 @@ export default class extends Controller {
       console.log("Options controller connected!");
       console.log("standard_features target:", this.hasStandard_featuresTarget);
       console.log("power_options target:", this.hasPower_optionsTarget);
-      // ... and so on for each target
+      console.log("cooler_options target:", this.hasCooler_optionsTarget);
+      
   }
 
 

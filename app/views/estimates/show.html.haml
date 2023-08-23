@@ -1,4 +1,6 @@
-.mx-auto.py-12.w-full{:class => "md:w-2/3"}
+.mx-auto.py-12.print-py.w-full{:class => "md:w-2/3"}
+  .grid-cols-6.print-hidden
+    = link_to 'Edit', edit_estimate_path(@estimate), class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'
   .grid.grid-cols-6.gap-4
     .col-span-2
       = image_tag 'waypoint.svg', alt:"Waypoint Marine"
@@ -68,6 +70,15 @@
       - @estimate.boat_model.standard_features.each do |option|
         •
         = option.name
+
+    .col-span-6
+      .p-2.bg-gray-100
+        %span.font-bold
+          Hull / Trailer Cost:
+        %span.float-right.font-bold
+          = number_to_currency(@estimate.hull_cost)
+      %p
+        Pricing does not include labor, battery, motor, binnacle, control box, wiring harness, key switch, emergency stop switch, gauges, prop, steering componants or jackplate w/ blinker trim.
 
   %hr
 
@@ -246,7 +257,7 @@
                 = number_to_currency(@estimate.subtotal_pre_tax)
           .tr
             .td.border.border-slate-300.p-2
-              Tax (.625%) :
+              Tax (.0625%) :
               %span.float-right.font-bold
                 = number_to_currency(@estimate.tax)
           .tr
@@ -272,9 +283,9 @@
 
 
   .grid.grid-cols-12.gap-4.mt-5
-    .col-span-6
+    .col-span-3
       %h2.mt-2 Down Payments
-    .col-span-2
+    .col-span-3
       .table-auto
         .tbody
           .tr
@@ -282,7 +293,7 @@
               10%
               %span.float-right.font-bold
                 = number_to_currency(@estimate.ten_total_price)  
-    .col-span-2
+    .col-span-3
       .table-auto
         .tbody
           .tr
@@ -290,7 +301,7 @@
               15%
               %span.float-right.font-bold
                 = number_to_currency(@estimate.fifteen_total_price)
-    .col-span-2
+    .col-span-3
       .table-auto
         .tbody
           .tr
@@ -326,7 +337,7 @@
           DATE
 
     .col-span-3.pt-5
-      %hr.mt-9.mb-2
+      %hr.mt-9.mb-2.print-signature
       %p.text-xs 
         SIGNATURE
         %span.float-right
@@ -335,5 +346,5 @@
   %br
   %br
 
-  = link_to 'Edit', edit_estimate_path(@estimate), class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'
-  = link_to 'Back', estimates_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+  = link_to 'Edit', edit_estimate_path(@estimate), class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline print-hidden'
+  = link_to 'Back', estimates_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold my-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline print-hidden'

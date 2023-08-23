@@ -63,8 +63,20 @@ class EstimatesController < ApplicationController
   def update
     respond_to do |format|
       @estimate = Estimate.find(params[:id])
+      @boat_model = @estimate.boat_model || BoatModel.first
       if estimate_params[:customer_id].blank? && @estimate.customer_id.present?
         params[:estimate][:customer_id] = @estimate.customer_id
+      end
+
+      # Reset the hull prices
+      @estimate.price_hull = nil
+      @estimate.price_trailer_hull = nil
+
+      # Update the hull prices based on the checkboxes
+      if params[:estimate][:price_hull].present?
+        @estimate.price_hull = @boat_model.price_hull
+      elsif params[:estimate][:price_trailer_hull].present?
+        @estimate.price_trailer_hull = @boat_model.price_trailer_hull
       end
 
       @estimate.boat_model_id = params[:estimate][:boat_model_id]
@@ -123,7 +135,7 @@ class EstimatesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def estimate_params
       params.require(:estimate).permit(
-        :customer_id, :boat_model_id, :subtotal, :tax, :vit, :doc_fee, :registration, :total_price, :po_name,
+        :customer_id, :boat_model_id, :subtotal, :tax, :vit, :doc_fee, :registration, :total_price, :po_name, :price_hull, :price_trailer_hull,
         power_option_ids: [], console_option_ids: [], factory_option_ids: [], gauge_upgrade_ids: [], seating_option_ids: [], 
         aluminum_option_ids: [], lighting_option_ids: [], finishing_option_ids: [], cooler_option_ids: [], wetsound_package_ids: [], 
         additional_option_ids: [], trailer_upgrade_ids: []

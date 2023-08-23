@@ -50,58 +50,80 @@ class Estimate < ApplicationRecord
 
   #totals for options
 
+  def hull_cost
+    if self.price_hull.present?
+      self.price_hull
+    elsif self.price_trailer_hull.present?
+      self.price_trailer_hull
+    else
+      0
+    end
+  end
+
   def power_options_total
+    puts "Power Options: #{power_options.inspect}"
     power_options_total = power_options.sum(:price)
   end
 
   def console_options_total
+    puts "Console Options: #{console_options.inspect}"
     console_options_total = console_options.sum(:price)
   end
 
   def factory_options_total
+    puts "Factory Options: #{factory_options.inspect}"
     factory_options_total = factory_options.sum(:price)
   end
 
   def gauge_upgrades_total
+    puts "Gauge Upgrades: #{gauge_upgrades.inspect}"
     gauge_upgrades_total = gauge_upgrades.sum(:price)
   end
 
   def seating_options_total
+    puts "Seating Options: #{seating_options.inspect}"
     seating_options_total = seating_options.sum(:price)
   end
 
   def aluminum_options_total
+    puts "Aluminum Options: #{aluminum_options.inspect}"
     aluminum_options_total = aluminum_options.sum(:price)
   end
 
   def finishing_options_total
+    puts "Finishing Options: #{finishing_options.inspect}"
     finishing_options_total = finishing_options.sum(:price)
   end
 
   def lighting_options_total
+    puts "Lighting Options: #{lighting_options.inspect}"
     lighting_options_total = lighting_options.sum(:price)
   end
 
   def cooler_options_total
+    puts "Cooler Options: #{cooler_options.inspect}"
     cooler_options_total = cooler_options.sum(:price)
   end
 
   def wetsound_packages_total
+    puts "Wetsound Packages: #{wetsound_packages.inspect}"
     wetsound_packages_total = wetsound_packages.sum(:price)
   end
 
   def additional_options_total
+    puts "Additional Options: #{additional_options.inspect}"
     additional_options_total = additional_options.sum(:price)
   end
 
   def trailer_upgrades_total
+    puts "Trailer Upgrades: #{trailer_upgrades.inspect}"
     trailer_upgrades_total = trailer_upgrades.sum(:price)
   end
 
   #financing parts
 
   def subtotal_pre_tax
-      subtotal_pre_tax = boat_model.price_trailer_hull + boat_model.price_hull + power_options_total + console_options_total + factory_options_total + gauge_upgrades_total + seating_options_total + aluminum_options_total + lighting_options_total + finishing_options_total + cooler_options_total + wetsound_packages_total + additional_options_total + trailer_upgrades_total
+    subtotal_pre_tax = hull_cost + power_options_total + console_options_total + factory_options_total + gauge_upgrades_total + seating_options_total + aluminum_options_total + lighting_options_total + finishing_options_total + cooler_options_total + wetsound_packages_total + additional_options_total + trailer_upgrades_total
   end
 
   def tax

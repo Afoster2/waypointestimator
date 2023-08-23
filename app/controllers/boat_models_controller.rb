@@ -81,7 +81,7 @@ class BoatModelsController < ApplicationController
       aluminum_options: boat_model.aluminum_options,
       lighting_options: boat_model.lighting_options,
       finishing_options: boat_model.finishing_options,
-      cooler_options: boat_model.console_options,
+      cooler_options: boat_model.cooler_options,
       wetsound_packages: boat_model.wetsound_packages,
       additional_options: boat_model.additional_options,
       trailer_upgrades: boat_model.trailer_upgrades

@@ -11,3 +11,47 @@
 }
 
 */
+
+@media print {
+
+  * {
+    -webkit-print-color-adjust: exact; /* Chrome, Safari */
+    color-adjust: exact; /* Firefox */
+  }
+
+  hr {
+    margin-top: 9px !important;    /* Adjust as needed */
+    margin-bottom: 9px !important; /* Adjust as needed */
+  }
+
+  /* Hide edit and back buttons */
+  .print-hidden {
+    display: none;
+  }
+
+  .print-py {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+
+  .print-signature {
+    margin-top: 30px !important;
+  }
+
+  /* Adjust layout and spacing */
+  body {
+    padding: 1rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: black;
+  }
+
+  p, span, div {
+    color: black;
+    font-size: 12px;
+  }
+}
+
+
+
