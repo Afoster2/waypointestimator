@@ -10,6 +10,7 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 
 # Controllers
 pin_all_from "app/javascript/controllers", under: "controllers"
+pin "@rails/request.js", to: "request.min.js", preload: true
 
 # External libraries
 pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.7.0/dist/jquery.js"

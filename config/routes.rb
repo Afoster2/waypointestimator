@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   resources :estimates
   resources :options
   resources :boat_models
+
+  get 'customers/search', to: 'customers#search', as: :search_customers, defaults: { format: 'json' }
   resources :customers
+  
   get 'pages/home'
   devise_for :users
 
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
   # Remove this line since it's already defined by `resources :customers`
   # get '/customers/:id', to: 'customers#show', as: 'customer'
   get 'estimates/customers/:id', to: 'customers#show', defaults: { format: 'json' }, as: 'estimates_customer'
+
 
   # For boat model options
   get '/boat_models/:id/options', to: 'boat_models#options', as: 'boat_model_options'

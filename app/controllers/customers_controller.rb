@@ -51,6 +51,20 @@ class CustomersController < ApplicationController
     redirect_to customers_url, notice: 'Customer was successfully destroyed.'
   end
 
+  def search
+    if params[:query].present?
+      # Adjust the query to search by first_name and last_name
+      @customers = Customer.where('first_name LIKE :query OR last_name LIKE :query OR email LIKE :query', query: "%#{params[:query]}%")
+    else
+      @customers = Customer.none
+    end
+
+    # Make sure to only return the necessary fields, and in the correct format
+    respond_to do |format|
+      format.json { render json: @customers.as_json(only: [:id, :first_name, :last_name, :email, :address, :address2, :city, :state, :zip, :phone]) }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer

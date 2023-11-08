@@ -24,32 +24,52 @@
   .grid.grid-cols-6.gap-4
     .col-span-4
       %h6 BILL TO
-      %div{ data: { controller: "customer-select" } }
-        = form.select :customer_id, options_for_select([["Select a customer", ""]].concat(Customer.all.map { |c| [c.full_name, c.id] })),
-                      {},
-                      data: { action: "change->customer-select#loadCustomerInfo", url: estimates_customer_path(":id"), customer_select_target: "customerSelect" },
-                      id: "customer-select"
+      %div{ 'data-controller': 'search' }
+        %input{ 'data-action': 'input->search#search', 'data-search-target': 'input', type: 'text', placeholder: 'Search customers...' }
+        %input{ type: 'hidden', name: 'estimate[customer_id]', id: 'estimate_customer_id' }
+        %div{ 'data-search-target': 'results', class: 'search-results' }
+
+        %div{ 'data-search-target': 'selectedCustomer', class: 'selected-customer-info' }
 
 
-        %h6.font-bold.uppercase
-          %span{ "data-customer-select-target" => "first_name" }= @estimate.customer&.first_name
-          %span{ "data-customer-select-target" => "last_name" }= @estimate.customer&.last_name
-        %h6.font-bold Address:
-        %p-5
-          %span{ "data-customer-select-target" => "address" }= @estimate.customer&.address
-          ,
-          %span{ "data-customer-select-target" => "city" }= @estimate.customer&.city
-          ,
-          %span{ "data-customer-select-target" => "state" }= @estimate.customer&.state
-          ,
-          %span{ "data-customer-select-target" => "zip" }= @estimate.customer&.zip
+        %div{ 'data-search-target': 'selectedCustomer', class: 'selected-customer-info' }
+          - if estimate.customer.present?
+            %strong= estimate.customer.full_name
+            %br/
+            %span= estimate.customer.email
+            %br/
+            %span= number_to_phone(estimate.customer.phone)
+            %br/
+            %span= "#{estimate.customer.address} #{estimate.customer.address2}"
+            %br/
+            %span= "#{estimate.customer.city}, #{estimate.customer.state} #{estimate.customer.zip}"
 
-        %h6
-          %span.font-bold Email: 
-          %span{ "data-customer-select-target" => "email" }= @estimate.customer&.email
-        %h6
-          %span.font-bold Phone: 
-          %span{ "data-customer-select-target" => "phone" }= number_to_phone(@estimate.customer&.phone)
+      / %div{ data: { controller: "customer-select" } }
+      /   = form.select :customer_id, options_for_select([["Select a customer", ""]].concat(Customer.all.map { |c| [c.full_name, c.id] })),
+      /                 {},
+      /                 data: { action: "change->customer-select#loadCustomerInfo", url: estimates_customer_path(":id"), customer_select_target: "customerSelect" },
+      /                 id: "customer-select"
+
+
+      /   %h6.font-bold.uppercase
+      /     %span{ "data-customer-select-target" => "first_name" }= @estimate.customer&.first_name
+      /     %span{ "data-customer-select-target" => "last_name" }= @estimate.customer&.last_name
+      /   %h6.font-bold Address:
+      /   %p-5
+      /     %span{ "data-customer-select-target" => "address" }= @estimate.customer&.address
+      /     ,
+      /     %span{ "data-customer-select-target" => "city" }= @estimate.customer&.city
+      /     ,
+      /     %span{ "data-customer-select-target" => "state" }= @estimate.customer&.state
+      /     ,
+      /     %span{ "data-customer-select-target" => "zip" }= @estimate.customer&.zip
+
+      /   %h6
+      /     %span.font-bold Email: 
+      /     %span{ "data-customer-select-target" => "email" }= @estimate.customer&.email
+      /   %h6
+      /     %span.font-bold Phone: 
+      /     %span{ "data-customer-select-target" => "phone" }= number_to_phone(@estimate.customer&.phone)
 
 
 

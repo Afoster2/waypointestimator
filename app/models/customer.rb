@@ -7,4 +7,8 @@ class Customer < ApplicationRecord
 	  "#{first_name} #{last_name}"
 	end
 
+	def formatted_phone
+	  ActionController::Base.helpers.number_to_phone(self.phone, area_code: true)
+	end
+
 end
