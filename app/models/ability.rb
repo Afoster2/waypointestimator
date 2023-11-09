@@ -13,8 +13,9 @@ class Ability
       can :read, Estimate, user_id: user.id
       can :update, User, id: user.id
       can :update, Estimate, user_id: user.id
+      cannot :manage, BoatModel
     else
-      can :read, :all
+      #can :read, :all
     end
   end
 

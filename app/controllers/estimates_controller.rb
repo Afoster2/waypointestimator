@@ -1,4 +1,5 @@
 class EstimatesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_estimate, only: %i[ show edit update destroy ]
   before_action :set_user, only: [:create, :update]
   before_action :set_default_boat_model, only: [:new]

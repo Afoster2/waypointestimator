@@ -1,6 +1,6 @@
 .bg-gray-50.py-10
   .mx-auto.w-full{:class => "md:w-2/3"}
-    %h2.text-center.text-3xl.text-blue-500.mb-4 Log in
+    %h2.text-center.text-3xl.text-blue-500.mb-4 Sign In
 
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .mb-4
@@ -14,6 +14,6 @@
           = f.check_box :remember_me, class: 'mr-2 leading-tight'
           = f.label :remember_me
       .mb-4
-        = f.submit "Log in", class: 'w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+        = f.submit "SIGN IN", class: 'w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
 
     = render "devise/shared/links"

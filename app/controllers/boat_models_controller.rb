@@ -1,4 +1,5 @@
 class BoatModelsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_boat_model, only: [:show, :edit, :update, :destroy]
 
   # GET /boat_models

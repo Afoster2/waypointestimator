@@ -1,9 +1,15 @@
 class CustomersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers
   def index
-    @customers = current_user.customers
+    if current_user
+      @customers = current_user.customers
+    else
+      # If there is no current_user, redirect to the login page or show an error.
+      redirect_to new_user_session_path, alert: 'You must be logged in to view customers.'
+    end
   end
 
   # GET /customers/1
