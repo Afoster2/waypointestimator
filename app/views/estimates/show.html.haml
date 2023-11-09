@@ -43,13 +43,11 @@
         %span.font-bold
           = @estimate.user.full_name
         %br/
-        P.O. Number:
-        - if @estimate.po_name
+        - if @estimate.po_name.present?
+          P.O. Number:
           %span.font-bold
             = @estimate.po_name
-        - else
-          ____________
-        %br/
+          %br
         Estimate Date:
         %span.font-bold
           = @estimate.created_at.strftime("%m/%d/%y")
@@ -80,167 +78,107 @@
       %p
         Pricing does not include labor, battery, motor, binnacle, control box, wiring harness, key switch, emergency stop switch, gauges, prop, steering componants or jackplate w/ blinker trim.
 
-  %hr
+  %br/
 
   .grid.grid-cols-6.gap-4
-    .col-span-3.mr-4
-      %h4 Power Options:
-      .p-2.bg-gray-100
-        - @estimate.power_options.each do |option|
-          .mb-3
-            = "#{option.year} #{option.engine_make} #{option.model_number}"
-            .float-right
-              = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :
-        %span.float-right
-          = number_to_currency(@estimate.power_options_total)
+    .col-span-6.m-0
+      - if @estimate.power_options.any?
+        %h4.mt-1 Power Options:
+        .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
+          - @estimate.power_options.each do |option|
+            .mb-0
+              = "#{option.year} #{option.engine_make} #{option.model_number}"
+              .float-right
+                = number_to_currency(option.price)
 
-
-    .col-span-3.ml-4
-      %h4 Console Options:
-      .p-2.bg-gray-100
+      - if @estimate.console_options.any?
+        %h4.mt-1 Console Options:
         - @estimate.console_options.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
-              = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.console_options_total)           
+              = number_to_currency(option.price)        
 
-    .col-span-3.mr-4
-      %h4 Factory Options:
-      .p-2.bg-gray-100
+      - if @estimate.factory_options.any?
+        %h4.mt-1 Factory Options:
         - @estimate.factory_options.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
               = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.factory_options_total) 
 
-    .col-span-3.ml-4
-      %h4 Gauge Upgrades:
-      .p-2.bg-gray-100
+      - if @estimate.gauge_upgrades.any?
+        %h4.mt-1 Gauge Upgrades:
         - @estimate.gauge_upgrades.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
               = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.gauge_upgrades_total)
 
-    .col-span-3.mr-4
-      %h4 Seating Options:
-      .p-2.bg-gray-100
+      - if @estimate.seating_options.any?
+        %h4.mt-1 Seating Options:
         - @estimate.seating_options.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
               = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.seating_options_total)
 
-    .col-span-3.ml-4
-      %h4 Aluminum Options:
-      .p-2.bg-gray-100
+      - if @estimate.aluminum_options.any?
+        %h4.mt-1 Aluminum Options:
         - @estimate.aluminum_options.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
               = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.aluminum_options_total)
 
-    .col-span-3.mr-4
-      %h4 Lighting Options:
-      .p-2.bg-gray-100
+      - if @estimate.lighting_options.any?
+        %h4.mt-1 Lighting Options:
         - @estimate.lighting_options.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
               = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.lighting_options_total)
 
-    .col-span-3.ml-4
-      %h4 Finishing Options:
-      .p-2.bg-gray-100
+      - if @estimate.finishing_options.any?
+        %h4.mt-1 Finishing Options:
         - @estimate.finishing_options.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
               = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.finishing_options_total)
 
-    .col-span-3.mr-4
-      %h4 Cooler Options:
-      .p-2.bg-gray-100
+      - if @estimate.cooler_options.any?
+        %h4.mt-1 Cooler Options:
         - @estimate.cooler_options.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
               = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.cooler_options_total)
 
-    .col-span-3.ml-4
-      %h4 Wetsound Packages:
-      .p-2.bg-gray-100
+      - if @estimate.wetsound_packages.any?
+        %h4.mt-1 Wetsound Packages:
         - @estimate.wetsound_packages.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
               = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.wetsound_packages_total)
 
-    .col-span-3.mr-4
-      %h4 Additional Options:
-      .p-2.bg-gray-100
+      - if @estimate.additional_options.any?
+        %h4.mt-1 Additional Options:
         - @estimate.additional_options.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
               = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.additional_options_total)
 
-    .col-span-3.ml-4
-      %h4 Trailer Upgrades:
-      .p-2.bg-gray-100
+      - if @estimate.trailer_upgrades.any?
+        %h4.mt-1 Trailer Upgrades:
         - @estimate.trailer_upgrades.each do |option|
-          .mb-3
+          .mb-0.estimate-lineitems.bg-gray-100.border-slate-300
             = option.name
             .float-right
               = number_to_currency(option.price)
-      .p-2.bg-gray-200.font-bold
-        SUBTOTAL :   
-        %span.float-right
-          = number_to_currency(@estimate.trailer_upgrades_total)
-
-  %hr
+  %br/
 
       
   .grid.grid-cols-6

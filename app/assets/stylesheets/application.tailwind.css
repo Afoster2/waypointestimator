@@ -20,8 +20,8 @@
   }
 
   hr {
-    margin-top: 9px !important;    /* Adjust as needed */
-    margin-bottom: 9px !important; /* Adjust as needed */
+    margin-top: 2px !important;    /* Adjust as needed */
+    margin-bottom: 2px !important; /* Adjust as needed */
   }
 
   /* Hide edit and back buttons */
@@ -90,4 +90,11 @@
 
 .selected-customer-info {
   margin-top: 10px;
+}
+
+
+.estimate-lineitems {
+  border-bottom: solid 1px #494949;
+  border-top: solid 1px #494949;
+  padding: 6px;
 }
