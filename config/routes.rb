@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/show'
   resources :estimates
   resources :options
   resources :boat_models
@@ -8,6 +10,8 @@ Rails.application.routes.draw do
   
   get 'pages/home'
   devise_for :users
+
+  resources :users, only: [:index, :show]
 
   resources :boat_models do
     get 'options', on: :member

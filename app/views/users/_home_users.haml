@@ -1,0 +1,15 @@
+%table.table-auto.w-full
+  %thead
+    %tr
+      %th.px-4.py-2 Name
+      %th.px-4.py-2 Last Active
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td.px-4.py-2.text-sm
+          = link_to user.full_name, user_path(user), class: 'no-underline'
+        %td.px-4.py-2.text-sm
+          = user.last_sign_in_at.strftime("%m/%d/%Y") rescue 'Never'
+        %td.px-4.py-2.text-sm
+          = link_to 'View', user_path(user), class: 'bg-green-500 text-white px-8 py-2 no-underline'

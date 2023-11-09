@@ -1,0 +1,27 @@
+.mx-auto.py-4.w-full{:class => "md:w-10/12"}
+  .grid.grid-cols-6.mt-2
+    .col-span-6
+      - if can? :read, User
+        %h2 Sales Reps
+
+        %table.table-auto.w-full
+          %thead
+            %tr
+              %th.px-4.py-2 Full Name
+              %th.px-4.py-2 Email
+              %th.px-4.py-2 Last Active
+              %th.px-4.py-2 Total Estimates
+
+          %tbody
+            - @users.each do |user|
+              %tr
+                %td.px-4.py-2.text-sm
+                  = link_to user.full_name, user_path(user), class: 'no-underline'
+                %td.px-4.py-2.text-sm
+                  = user.email
+                %td.px-4.py-2.text-sm
+                  = user.last_sign_in_at.strftime("%Y-%m-%d %H:%M:%S") rescue 'Never logged in'
+                %td.px-4.py-2.text-sm
+                  = user.estimates.count
+                %td.flex.space-x-4.py-2.flex.justify-end.text-sm
+                  = link_to 'View', user_path(user), class: 'bg-green-500 text-white px-8 py-2 no-underline'
