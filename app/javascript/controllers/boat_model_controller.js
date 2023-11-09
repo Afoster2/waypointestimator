@@ -14,6 +14,10 @@ export default class extends Controller {
     powerOptions.insertAdjacentHTML('beforeend', `
       <div class="grid grid-cols-6 gap-4">
         <div class="col-span-1">
+          <label for="boat_model_power_options_attributes_${newId}_year">Year</label>
+          <input type="number" name="boat_model[power_options_attributes][${newId}][year]" id="boat_model_power_options_attributes_${newId}_year" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        </div>
+        <div class="col-span-1">
           <label for="boat_model_power_options_attributes_${newId}_brand">Brand</label>
           <input type="text" name="boat_model[power_options_attributes][${newId}][brand]" id="boat_model_power_options_attributes_${newId}_brand" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
